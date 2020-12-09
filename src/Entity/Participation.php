@@ -2,8 +2,10 @@
 
 namespace App\Entity;
 
-use App\Repository\ParticipationRepository;
+use App\Entity\Trip;
+use App\Entity\User;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ParticipationRepository;
 
 /**
  * @ORM\Entity(repositoryClass=ParticipationRepository::class)
