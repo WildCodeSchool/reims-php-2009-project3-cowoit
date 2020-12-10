@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello TripController!{% endblock %}
+
+{% block body %}
+    {% for trip in trips %}
+        <div>
+            <ul>
+                <li>{{ trip.date }}</li>
+                <li>{{ trip.nbPassengers }}</li>
+                <li>{{ trip.addressStart }}</li>
+                <li>{{ trip.addressEnd }}</li>
+                <li>{{ trip.driver.id }}</li>
+            </ul>
+        </div>
+    {% endfor %}
+{% endblock %}

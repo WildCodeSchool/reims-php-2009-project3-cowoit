@@ -2,10 +2,12 @@
 
 namespace App\Entity;
 
-use App\Repository\TripRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Entity\User;
+use App\Entity\Participation;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\TripRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass=TripRepository::class)
@@ -20,9 +22,9 @@ class Trip
     private int $id;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="string")
      */
-    private \DateTimeInterface $date;
+    private string $date;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -48,7 +50,7 @@ class Trip
     /**
      * @ORM\OneToMany(targetEntity=Participation::class, mappedBy="trip")
      */
-    private ArrayCollection $participations;
+    private Collection $participations;
 
     public function __construct()
     {
@@ -60,12 +62,12 @@ class Trip
         return $this->id;
     }
 
-    public function getDate(): ?\DateTimeInterface
+    public function getDate(): ?string
     {
         return $this->date;
     }
 
-    public function setDate(\DateTimeInterface $date): self
+    public function setDate(string $date): self
     {
         $this->date = $date;
 

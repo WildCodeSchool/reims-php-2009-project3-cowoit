@@ -2,10 +2,12 @@
 
 namespace App\Entity;
 
-use App\Repository\UserRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Entity\Trip;
+use App\Entity\Participation;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\UserRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -42,12 +44,12 @@ class User
     /**
      * @ORM\OneToMany(targetEntity=Trip::class, mappedBy="driver")
      */
-    private ArrayCollection $trips;
+    private Collection $trips;
 
     /**
      * @ORM\OneToMany(targetEntity=Participation::class, mappedBy="passenger")
      */
-    private ArrayCollection $participations;
+    private Collection $participations;
 
     public function __construct()
     {
