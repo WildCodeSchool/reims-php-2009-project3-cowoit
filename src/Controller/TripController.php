@@ -2,16 +2,18 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\Trip;
+use App\Form\TripType;
+use App\Repository\TripRepository;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Repository\TripRepository;
-use App\Entity\Trip;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class TripController extends AbstractController
 {
     /**
-     * @Route("/trip", name="trip")
+     * @Route("/trip", name="trip_index")
      */
     public function index(): Response
     {
@@ -21,6 +23,27 @@ class TripController extends AbstractController
 
         return $this->render('trip/index.html.twig', [
             'trips' => $trips,
+        ]);
+    }
+
+    /**
+     * @Route("/trip/new", name="trip_new")
+     */
+    public function new(Request $request): Response
+    {
+        $trip = new Trip();
+        $form = $this->createForm(TripType::class, $trip);
+        $form-> handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()
+            ->getManager();
+            $entityManager->persist($trip);
+            $entityManager->flush();
+            return $this->redirectToRoute('trip_index');
+        }
+        return $this->render('trip/new.html.twig', [
+            'form' => $form->createView()
         ]);
     }
 }

@@ -42,12 +42,6 @@ class Trip
     private int $nbPassengers;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="trips")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private ?User $driver;
-
-    /**
      * @ORM\OneToMany(targetEntity=Participation::class, mappedBy="trip")
      */
     private Collection $participations;
@@ -106,18 +100,6 @@ class Trip
     public function setNbPassengers(int $nbPassengers): self
     {
         $this->nbPassengers = $nbPassengers;
-
-        return $this;
-    }
-
-    public function getDriver(): ?User
-    {
-        return $this->driver;
-    }
-
-    public function setDriver(?User $driver): self
-    {
-        $this->driver = $driver;
 
         return $this;
     }
