@@ -19,37 +19,37 @@ class User
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private int $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $firstname;
+    private string $firstname;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $lastname;
+    private string $lastname;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $email;
+    private string $email;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $password;
+    private string $password;
 
     /**
      * @ORM\OneToMany(targetEntity=Trip::class, mappedBy="driver")
      */
-    private $trips;
+    private Collection $trips;
 
     /**
      * @ORM\OneToMany(targetEntity=Participation::class, mappedBy="passenger")
      */
-    private $participations;
+    private Collection $participations;
 
     public function __construct()
     {

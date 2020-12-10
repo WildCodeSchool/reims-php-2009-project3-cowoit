@@ -17,29 +17,29 @@ class Participation
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private int $id;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $note;
+    private int $note;
 
     /**
      * @ORM\Column(type="text")
      */
-    private $comment;
+    private string $comment;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="participations")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $passenger;
+    private ?User $passenger;
 
     /**
      * @ORM\ManyToOne(targetEntity=Trip::class, inversedBy="participations")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $trip;
+    private ?Trip $trip;
 
     public function getId(): ?int
     {

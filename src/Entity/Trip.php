@@ -19,38 +19,38 @@ class Trip
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private int $id;
 
     /**
      * @ORM\Column(type="string")
      */
-    private $date;
+    private string $date;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $addressStart;
+    private string $addressStart;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $addressEnd;
+    private string $addressEnd;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $nbPassengers;
+    private int $nbPassengers;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="trips")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $driver;
+    private ?User $driver;
 
     /**
      * @ORM\OneToMany(targetEntity=Participation::class, mappedBy="trip")
      */
-    private $participations;
+    private Collection $participations;
 
     public function __construct()
     {
