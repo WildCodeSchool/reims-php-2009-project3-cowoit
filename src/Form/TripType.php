@@ -18,14 +18,6 @@ class TripType extends AbstractType
             ->add('addressStart')
             ->add('addressEnd')
             ->add('nbPassengers')
-            ->add('driver', EntityType::class, [
-                'class' => User::class,
-                'choice_label' => 'id',
-                'multiple' => false,
-                'expanded' => false,
-                'by_reference' => false,
-            ])
-            /* ->add('driver', ChoiceType::class, ['choice_value' => '1']) */
         ;
     }
 

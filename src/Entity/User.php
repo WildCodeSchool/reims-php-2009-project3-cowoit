@@ -42,18 +42,12 @@ class User
     private string $password;
 
     /**
-     * @ORM\OneToMany(targetEntity=Trip::class, mappedBy="driver")
-     */
-    private Collection $trips;
-
-    /**
      * @ORM\OneToMany(targetEntity=Participation::class, mappedBy="passenger")
      */
     private Collection $participations;
 
     public function __construct()
     {
-        $this->trips = new ArrayCollection();
         $this->participations = new ArrayCollection();
     }
 
@@ -106,36 +100,6 @@ class User
     public function setPassword(string $password): self
     {
         $this->password = $password;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Trip[]
-     */
-    public function getTrips(): Collection
-    {
-        return $this->trips;
-    }
-
-    public function addTrip(Trip $trip): self
-    {
-        if (!$this->trips->contains($trip)) {
-            $this->trips[] = $trip;
-            $trip->setDriver($this);
-        }
-
-        return $this;
-    }
-
-    public function removeTrip(Trip $trip): self
-    {
-        if ($this->trips->removeElement($trip)) {
-            // set the owning side to null (unless already changed)
-            if ($trip->getDriver() === $this) {
-                $trip->setDriver(null);
-            }
-        }
 
         return $this;
     }
