@@ -65,7 +65,19 @@ class TripController extends AbstractController
 
         return $this->render('trip/search.html.twig', [
             'trips' => $trip,
-            'form' => $form->createView()
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/trip/history", name="trip_history")
+     */
+    public function history(TripRepository $tripRepository): Response
+    {
+        $history = $tripRepository->history();
+
+        return $this->render('trip/history.html.twig', [
+            'history' => $history
         ]);
     }
 }

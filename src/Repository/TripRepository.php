@@ -57,9 +57,22 @@ class TripRepository extends ServiceEntityRepository
             ->where("t.addressStart  = :addressStart")
             ->andWhere("t.addressEnd = :addressEnd")
             ->andWhere("t.date = :date")
+            ->andWhere("t.date  >= CURRENT_DATE()")
             ->setParameter('addressStart', $addressStart)
             ->setParameter('addressEnd', $addressEnd)
             ->setParameter('date', $date)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    /**
+     * @return Trip[]
+     */
+    public function history()
+    {
+        return $this->createQueryBuilder('t')
+            ->where("t.date  < CURRENT_DATE()")
             ->getQuery()
             ->getResult()
         ;

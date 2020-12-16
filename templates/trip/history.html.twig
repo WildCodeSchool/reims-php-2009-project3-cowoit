@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}History{% endblock %}
+
+{% block body %}
+
+<h1>Historique</h1>
+
+{% for trip in history %}
+ <ul>
+    {{ trip.date }}
+    {{ trip.addressStart }}    
+    {{ trip.addressEnd }}
+ </ul>
+{% endfor %}
+
+{% endblock %}
