@@ -46,4 +46,26 @@ class TripController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
+    /**
+     * @Route("/", name="trip_search")
+     */
+    public function search(Request $request, TripRepository $tripRepository): Response
+    {
+        $trip = new Trip();
+        $form = $this->createForm(TripType::class, $trip);
+        $form-> handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $date = $trip->getDate();
+            $addressStart = $trip->getAddressStart();
+            $addressEnd = $trip->getAddressEnd();
+            $trip = $tripRepository->search((string)$date, (string)$addressStart, (string)$addressEnd);
+        }
+
+        return $this->render('trip/search.html.twig', [
+            'trips' => $trip,
+            'form' => $form->createView()
+        ]);
+    }
 }
