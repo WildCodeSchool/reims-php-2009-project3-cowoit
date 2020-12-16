@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}History{% endblock %}
+
+{% block body %}
+
+<h1>Historique</h1>
+
+{% for histories in history %}
+ <ul>
+    {{ histories.date }}
+    {{ histories.addressStart }}    
+    {{ histories.addressEnd }}
+ </ul>
+{% endfor %}
+
+{% endblock %}

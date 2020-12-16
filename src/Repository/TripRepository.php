@@ -64,4 +64,16 @@ class TripRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+
+    /**
+     * @return Trip[]
+     */
+    public function history()
+    {
+        return $this->createQueryBuilder('t')
+            ->where("t.date  < CURRENT_DATE()")
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }
