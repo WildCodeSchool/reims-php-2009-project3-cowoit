@@ -47,4 +47,21 @@ class TripRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    /**
+     * @return Trip[]
+     */
+    public function search(string $date, string $addressStart, string $addressEnd): array
+    {
+        return $this->createQueryBuilder('t')
+            ->where("t.addressStart  = :addressStart")
+            ->andWhere("t.addressEnd = :addressEnd")
+            ->andWhere("t.date = :date")
+            ->setParameter('addressStart', $addressStart)
+            ->setParameter('addressEnd', $addressEnd)
+            ->setParameter('date', $date)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }
