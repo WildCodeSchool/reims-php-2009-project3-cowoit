@@ -6,11 +6,11 @@
 
 <h1>Historique</h1>
 
-{% for histories in history %}
+{% for trip in history %}
  <ul>
-    {{ histories.date }}
-    {{ histories.addressStart }}    
-    {{ histories.addressEnd }}
+    {{ trip.date }}
+    {{ trip.addressStart }}    
+    {{ trip.addressEnd }}
  </ul>
 {% endfor %}
 
