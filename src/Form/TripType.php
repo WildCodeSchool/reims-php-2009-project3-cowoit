@@ -8,16 +8,29 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class TripType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('date')
-            ->add('addressStart')
-            ->add('addressEnd')
-            ->add('nbPassengers')
+            ->add('date', DateType::class, [
+                'widget' => 'choice',
+                'label' => 'Jour-Mois-Année',
+                'format' => 'dd-MM-yyyy',
+                'input' => 'string',
+            ])
+            ->add('addressStart', TextType::class, [
+                'label' => 'Départ',
+            ])
+            ->add('addressEnd', TextType::class, [
+                'label' => 'Arrivée',
+            ])
+            ->add('nbPassengers', TextType::class, [
+                'label' => 'Nombre de Passagers',
+            ])
         ;
     }
 
