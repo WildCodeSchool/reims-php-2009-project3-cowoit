@@ -9,6 +9,41 @@ body {
     min-height: 100vh
 }
 
+// Homepage //
+    img {
+        display: flex;
+        justify-content: space-around;
+    }
+    .homepageLogo {
+        width: 30%;
+        height: auto;
+    }
+    .navbar {
+        flex-direction: column;
+        text-align: center;
+    }
+    .navbarList {
+        display: flex;
+        flex-direction: row;
+        list-style: none;
+        justify-content: space-around;
+        margin-bottom: 10vw;
+    }
+    span.list {
+        display: none;
+    }
+    span.iconList {
+        display: flex;
+        flex-direction: row;
+    }
+    form {
+        display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    }
+
+
+// end Homepage //
 // Add trip form // 
 
 .cowoit-logo {
@@ -53,7 +88,41 @@ form div {
 // Desktop versions //
 
 @media screen and (min-width: 1024px) {
-    
+  
+  // Desktop homepage //
+  .homepageLogo {
+        width: 20%;
+        height: auto;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .navbar {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+        span.iconList {
+        display: none;
+    }
+    .navbarList {
+        list-style: none;
+    }
+    .list {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        margin-bottom: 5vw;
+    }
+    .form {
+        display: flex;
+        justify-content: center;
+    }
+    form {
+        display: flex;
+    }
+  // end Desktop homepage //
     .cowoit-logo {
         display: flex;
         margin-left: inherit;
@@ -113,3 +182,4 @@ form div {
 }
 
 // End of History section //
+
