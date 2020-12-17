@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="{{ asset('build/images/favicon.png') }}" />
     <title>{% block title %}Welcome!{% endblock %}</title>
     {% block stylesheets %}
@@ -9,11 +10,11 @@
     {% endblock %}
 </head>
 <body>
+    <a href="/"><img src="{{ asset('build/images/cowoit_logo.JPG') }}" alt="cowoit logo" class="cowoit-logo"/></a>
+    {% block body %}{% endblock %}
 
-{% block body %}{% endblock %}
-
-{% block javascripts %}
-    {{ encore_entry_script_tags('app') }}
-{% endblock %}
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
 </body>
 </html>

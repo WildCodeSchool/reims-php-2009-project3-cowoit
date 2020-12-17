@@ -1,8 +1,15 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}
+    Ajouter un trajet - Cowoit
+{% endblock title %}
+
 {% block body %}
+    <h1 class="new-trip-title">Ajouter un trajet</h1>
+    <div class="new-trip-form">
     {{ form_start(form) }}
     {{ form_widget(form) }}
-    <input type="submit" value="Add trip">
+    <input type="submit" value="Ajouter mon trajet" class="add-trip-button">
     {{ form_end(form) }}
+    </div>
 {% endblock body %}
