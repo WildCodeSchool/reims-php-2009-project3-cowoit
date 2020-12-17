@@ -1,11 +1,102 @@
 @import 'variables.scss';
 
+
+
 body {
-    background-color: $wild-color;
-    color: $light-color;
+    background-color: $cowoit-color;
+    color: $cowoit-color-text;
     margin: 0;
     min-height: 100vh
 }
+
+// Add trip form // 
+
+.cowoit-logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+}
+.new-trip-title {
+    text-align: center;
+    color: $cowoit-color2;
+}
+#trip label {
+    display: block;
+}
+#trip input {
+    margin: 0;
+    box-sizing: border-box;
+    display: inline;
+}
+form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 1rem;
+}
+form div {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+#trip_date {
+    flex-direction: row;
+}
+.add-trip-button {
+    align-self: center;
+    padding: 0.5rem 1rem;
+}
+
+// End of add trip form //
+
+// Desktop versions //
+
+@media screen and (min-width: 1024px) {
+    
+    .cowoit-logo {
+        display: flex;
+        margin-left: inherit;
+        width: 15%;
+        margin-bottom: 5%;
+    }
+    .new-trip-title {
+        text-align: center;
+        color: $cowoit-color2;
+        font-size: 2.5rem;
+    }
+    .new-trip-form {
+        display: flex;
+        justify-content: center;
+    }
+    #trip label {
+        display: flex;
+        justify-content: center;
+    }
+    #trip input {
+        margin: 2px;
+        box-sizing: border-box;
+        display: inline;
+    }
+    form {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        padding: 1rem;
+        width: 50%;
+    }
+    form div {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1rem;
+    }
+    #trip_date {
+        flex-direction: row;
+        justify-content: center;
+    }
+}
+
+// History section //
 
 .history {
     text-align: center;
@@ -20,3 +111,5 @@ body {
 .bold {
     font-weight: bold;
 }
+
+// End of History section //
