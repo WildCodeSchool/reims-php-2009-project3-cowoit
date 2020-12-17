@@ -3,15 +3,18 @@
 {% block title %}History{% endblock %}
 
 {% block body %}
+<div class="history">
+   <h1>Historique</h1>
 
-<h1>Historique</h1>
-
-{% for trip in history %}
- <ul>
-    {{ trip.date }}
-    {{ trip.addressStart }}    
-    {{ trip.addressEnd }}
- </ul>
-{% endfor %}
+   <div class="history-content">
+      {% for trip in history %}
+         <li>
+            <p> <span class="bold">Départ :</span> {{ trip.addressStart }}</p>
+            <p><span class="bold">Arrivée :</span> {{ trip.addressEnd }}</p>
+            <p><span class="bold">Date :</span> {{ trip.date }}</p>
+         </li>
+      {% endfor %}
+   </div>
+</div>
 
 {% endblock %}
