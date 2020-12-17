@@ -10,11 +10,11 @@
     {% endblock %}
 </head>
 <body>
+    <a href="/"><img src="{{ asset('build/images/cowoit_logo.JPG') }}" alt="cowoit logo" class="cowoit-logo"/></a>
+    {% block body %}{% endblock %}
 
-{% block body %}{% endblock %}
-
-{% block javascripts %}
-    {{ encore_entry_script_tags('app') }}
-{% endblock %}
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
 </body>
 </html>

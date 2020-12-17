@@ -10,6 +10,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 
 class TripType extends AbstractType
 {
@@ -28,7 +29,7 @@ class TripType extends AbstractType
             ->add('addressEnd', TextType::class, [
                 'label' => 'Arrivée',
             ])
-            ->add('nbPassengers', TextType::class, [
+            ->add('nbPassengers', IntegerType::class, [
                 'label' => 'Nombre de Passagers',
             ])
         ;
