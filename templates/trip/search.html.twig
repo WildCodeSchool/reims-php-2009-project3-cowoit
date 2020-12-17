@@ -1,17 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Search{% endblock %}
+{% block title %}COWOIT{% endblock %}
 
 {% block body %}
 <div class="navbar">
-    <div>
-        <img class="homepageLogo" src="{{ asset('build/images/cowoitLogo.png') }}" alt="logoCowoit">
-    </div>
     <div class="navbarList">
         <span class="list">
             <li><a href="{{ path('trip_new') }}">Ajouter un trajet</a></li>
             <li><a href="{{ path('trip_history') }}">Historique</a></li>
-            <li><a href="{{ path('trip_map') }}">Charge Map</a></li>        
+            <li><a href="{{ path('trip_map') }}">Charge Map</a></li>
         </span>
         <span class="iconList">
             <li><a href="{{ path('trip_map') }}"><img src="{{ asset('build/images/chargeMapIcon.png') }}" alt="chargeMapIcon"></a></li>
@@ -31,7 +28,7 @@
     {{ form_label(form.addressEnd) }}
     {{ form_widget(form.addressEnd) }}
     {{ form_row(form._token) }}
-        <button class="btn">{{ button_label|default('Rechercher') }}</button>
+        <button class="add-trip-button">{{ button_label|default('Rechercher') }}</button>
     {{ form_end(form, {'render_rest': false}) }}
 </div>
 
