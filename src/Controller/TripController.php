@@ -40,7 +40,7 @@ class TripController extends AbstractController
             ->getManager();
             $entityManager->persist($trip);
             $entityManager->flush();
-            return $this->redirectToRoute('trip_index');
+            return $this->redirectToRoute('trip_search');
         }
         return $this->render('trip/new.html.twig', [
             'form' => $form->createView()
@@ -79,5 +79,13 @@ class TripController extends AbstractController
         return $this->render('trip/history.html.twig', [
             'history' => $history
         ]);
+    }
+
+    /**
+     * @Route("/trip/map", name="trip_map")
+     */
+    public function map(): Response
+    {
+        return $this->render('trip/map.html.twig');
     }
 }
