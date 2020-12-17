@@ -4,7 +4,7 @@ body {
     background-color: $wild-color;
     color: $light-color;
     margin: 0;
-    height: 100%;
+    min-height: 100vh
 }
 
 .history {
