@@ -5,6 +5,10 @@
 {% block body %}
 <h1>Cowoit</h1>
 
+<li><a href="{{ path('trip_new') }}">Ajouter un trajet</a></li>
+<li><a href="{{ path('trip_history') }}">Historique</a></li>
+<li><a href="{{ path('trip_map') }}">Charge Map</a></li>
+
 {{ form_start(form) }}
     {{ form_label(form.date) }}
     {{ form_widget(form.date) }}
