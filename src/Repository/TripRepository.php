@@ -56,11 +56,11 @@ class TripRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('t')
             ->where("t.addressStart  = :addressStart")
             ->andWhere("t.addressEnd = :addressEnd")
-            ->andWhere("t.date = :date")
+            ->andWhere("t.date LIKE :date")
             ->andWhere("t.date  >= CURRENT_DATE()")
             ->setParameter('addressStart', $addressStart)
             ->setParameter('addressEnd', $addressEnd)
-            ->setParameter('date', $date)
+            ->setParameter('date', '%' . $date . '%')
             ->getQuery()
             ->getResult()
         ;
