@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Result{% endblock %}
+
+{% block body %}
+    <div>
+        <ul>
+            Informations Conducteur :
+            <li>Prenom : {{ trip.driver.firstname }}</li>
+            <li>Nom : {{ trip.driver.lastname }}</li>
+            <br><br>
+            Informations Voyage :
+            <li>Date : {{ trip.date }}</li>
+            <li>Depart : {{ trip.addressStart }}</li>
+            <li>Arrivee : {{ trip.addressEnd }}</li>
+            <li>Passagers Possible : {{ trip.nbPassengers }}</li>
+        </ul>
+    </div>
+{% endblock %}

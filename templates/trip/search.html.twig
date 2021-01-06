@@ -33,11 +33,12 @@
 </div>
 
 {% for trip in trips %}
- <ul>
+<ul>
     {{ trip.date }}
     {{ trip.addressStart }}
     {{ trip.addressEnd }}
- </ul>
+    <a href="{{ path('trip_show', {'id': trip.id}) }}">Info</a>
+</ul>
 {% endfor %}
 
 {% endblock %}
