@@ -46,6 +46,12 @@ class Trip
      */
     private Collection $participations;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="trips")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private ?user $Driver;
+
     public function __construct()
     {
         $this->participations = new ArrayCollection();
@@ -130,6 +136,18 @@ class Trip
                 $participation->setTrip(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getDriver(): ?User
+    {
+        return $this->Driver;
+    }
+
+    public function setDriver(?User $driver): self
+    {
+        $this->Driver = $driver;
 
         return $this;
     }

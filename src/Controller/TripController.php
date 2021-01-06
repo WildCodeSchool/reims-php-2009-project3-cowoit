@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Trip;
 use App\Form\TripType;
+use App\Form\CreateTripType;
 use App\Repository\TripRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -32,10 +33,12 @@ class TripController extends AbstractController
     public function new(Request $request): Response
     {
         $trip = new Trip();
-        $form = $this->createForm(TripType::class, $trip);
+        $form = $this->createForm(CreateTripType::class, $trip);
         $form-> handleRequest($request);
+        $user = $this->getUser();
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $trip->setDriver($user);
             $entityManager = $this->getDoctrine()
             ->getManager();
             $entityManager->persist($trip);
@@ -87,5 +90,15 @@ class TripController extends AbstractController
     public function map(): Response
     {
         return $this->render('trip/map.html.twig');
+    }
+
+    /**
+     * @Route("/trip/{id}", name="trip_show", methods={"GET"})
+     */
+    public function show(Trip $trip): Response
+    {
+        return $this->render('trip/show.html.twig', [
+            'trip' => $trip,
+        ]);
     }
 }
