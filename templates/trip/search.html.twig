@@ -5,7 +5,7 @@
 {% block body %}
 <div class="navbar">
     <div class="navbarList">
-        <span class="list">
+        <ul class="list">
             <li><a href="{{ path('trip_map') }}">Charge Map</a></li>
             {% if app.user %}
                 <li><a href="{{ path('trip_new') }}">Ajouter un trajet</a></li>
@@ -14,8 +14,8 @@
                 <li><a href="{{ path('app_login') }}">Se connecter</a></li>
                 <li><a href="{{ path('app_register') }}">Créer un compte</a></li>
             {% endif %}
-        </span>
-        <span class="iconList">
+        </ul>
+        <ul class="iconList">
             <li><a href="{{ path('trip_map') }}"><img src="{{ asset('build/images/chargeMapIcon.png') }}" alt="chargeMapIcon"></a></li>
             {% if app.user %}
                 <li><a href="{{ path('trip_new') }}"><img src="{{ asset('build/images/newTripIcon.png') }}" alt="newTripIcon"></a></li>
@@ -24,7 +24,7 @@
                 <li><a href="{{ path('app_login') }}"><img src="{{ asset('build/images/loginIcon.png') }}" alt="loginIcon"></a></li>
                 <li><a href="{{ path('app_register') }}"><img src="{{ asset('build/images/signinIcon.png') }}" alt="signinIcon"></a></li>
             {% endif %}
-        </span>
+        </ul>
     </div>
 </div>
 
