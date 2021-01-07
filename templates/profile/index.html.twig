@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil de {{ app.user.firstname }} {{ app.user.lastname }}{% endblock %}
+
+{% block body %}
+{% for message in app.flashes('message') %}
+    <div>{{message}}</div>
+{% endfor %}
+<h1>Profil de {{ app.user.firstname }} {{ app.user.lastname }}</h1>
+<p>Nom : {{ app.user.lastname }}</p>
+<p>Prénom : {{ app.user.firstname }}</p>
+<p>E-mail : {{ app.user.email }}</p>
+<a href="{{ path('profile_edit') }}">Modifier le profil</a>
+<a href="{{ path('profile_edit_password') }}">Modifier le mot de passe</a>
+{% endblock %}
