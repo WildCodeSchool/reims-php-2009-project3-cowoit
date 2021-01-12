@@ -15,5 +15,6 @@
             <li>Arrivee : {{ trip.addressEnd }}</li>
             <li>Passagers Possible : {{ trip.nbPassengers }}</li>
         </ul>
+        <a href="{{ path('trip_reserved', {'id': trip.id}) }}">Reserve</a>
     </div>
 {% endblock %}
