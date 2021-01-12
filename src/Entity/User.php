@@ -55,9 +55,15 @@ class User implements UserInterface
      */
     private Collection $participations;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Trip::class, mappedBy="Driver", orphanRemoval=true)
+     */
+    private Collection $trips;
+
     public function __construct()
     {
         $this->participations = new ArrayCollection();
+        $this->trips = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -190,6 +196,36 @@ class User implements UserInterface
             // set the owning side to null (unless already changed)
             if ($participation->getPassenger() === $this) {
                 $participation->setPassenger(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Trip[]
+     */
+    public function getTrips(): Collection
+    {
+        return $this->trips;
+    }
+
+    public function addTrip(Trip $trip): self
+    {
+        if (!$this->trips->contains($trip)) {
+            $this->trips[] = $trip;
+            $trip->setDriver($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTrip(Trip $trip): self
+    {
+        if ($this->trips->removeElement($trip)) {
+            // set the owning side to null (unless already changed)
+            if ($trip->getDriver() === $this) {
+                $trip->setDriver(null);
             }
         }
 

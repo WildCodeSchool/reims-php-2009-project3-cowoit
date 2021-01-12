@@ -47,4 +47,53 @@ class ParticipationRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    /**
+     * @return Participation[]
+     */
+    public function nextTrips(?object $currentUser): array
+    {
+        return $this->createQueryBuilder('p')
+            ->select('p, t')
+            ->join('p.trip', 't')
+            ->where("t.date  > CURRENT_DATE()")
+            ->andWhere("p.passenger  = :currentUser")
+            ->setParameter('currentUser', $currentUser)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    /**
+     * @return Participation[]
+     */
+    public function passedTrips(?object $currentUser): array
+    {
+        return $this->createQueryBuilder('p')
+            ->select('p, t')
+            ->join('p.trip', 't')
+            ->where("t.date  < CURRENT_DATE()")
+            ->andWhere("p.passenger  = :currentUser")
+            ->setParameter('currentUser', $currentUser)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    /**
+     * @return Participation[]
+     */
+    public function comment(?object $currentUser): array
+    {
+        return $this->createQueryBuilder('p')
+            ->select('p, t')
+            ->join('p.trip', 't')
+            ->where("p.trip  = t.id")
+            ->andWhere("t.Driver  = :currentUser")
+            ->andWhere("p.note  IS NOT NULL")
+            ->setParameter('currentUser', $currentUser)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }

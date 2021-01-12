@@ -3,28 +3,26 @@
 {% block title %}COWOIT{% endblock %}
 
 {% block body %}
+  <div class="form">
+      {{ form_start(form) }}
+      {{ form_label(form.date) }}
+      {{ form_widget(form.date) }}
+      {{ form_label(form.addressStart) }}
+      {{ form_widget(form.addressStart) }}
+      {{ form_label(form.addressEnd) }}
+      {{ form_widget(form.addressEnd) }}
+      {{ form_row(form._token) }}
+          <button>{{ button_label|default('Rechercher') }}</button>
+      {{ form_end(form, {'render_rest': false}) }}
+  </div>
 
-
-
-<div class="form">
-    {{ form_start(form) }}
-    {{ form_label(form.date) }}
-    {{ form_widget(form.date) }}
-    {{ form_label(form.addressStart) }}
-    {{ form_widget(form.addressStart) }}
-    {{ form_label(form.addressEnd) }}
-    {{ form_widget(form.addressEnd) }}
-    {{ form_row(form._token) }}
-        <button>{{ button_label|default('Rechercher') }}</button>
-    {{ form_end(form, {'render_rest': false}) }}
-</div>
-
-{% for trip in trips %}
- <ul>
-    {{ trip.date }}
-    {{ trip.addressStart }}
-    {{ trip.addressEnd }}
- </ul>
+  {% for trip in trips %}
+  <ul>
+      {{ trip.date }}
+      {{ trip.addressStart }}
+      {{ trip.addressEnd }}
+      <a href="{{ path('trip_show', {'id': trip.id}) }}">Info</a>
+  </ul>
 {% endfor %}
 
 {% endblock %}

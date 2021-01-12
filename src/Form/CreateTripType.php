@@ -8,20 +8,18 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 
-class TripType extends AbstractType
+class CreateTripType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('date', DateType::class, [
+            ->add('date', DateTimeType::class, [
                 'widget' => 'choice',
-                'label' => 'Jour-Mois-Année',
                 'years' => range(date('Y'), date('Y') + 3),
-                'format' => 'dd-MM-yyyy',
                 'input' => 'string',
             ])
             ->add('addressStart', TextType::class, [
