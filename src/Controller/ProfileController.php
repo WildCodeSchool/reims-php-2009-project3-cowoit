@@ -2,10 +2,14 @@
 
 namespace App\Controller;
 
+use Exception;
 use App\Entity\User;
+use App\Form\CommentType;
+use App\Entity\Participation;
 use App\Form\EditProfileType;
 use App\Form\EditPasswordType;
-use Exception;
+use App\Repository\TripRepository;
+use App\Repository\ParticipationRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -17,11 +21,11 @@ class ProfileController extends AbstractController
     /**
      * @Route("/profile", name="profile")
      */
-    public function index(): Response
+    public function index(ParticipationRepository $participationRepo): Response
     {
-        return $this->render('profile/index.html.twig', [
-            'controller_name' => 'ProfilController',
-        ]);
+        $user = $this->getUser();
+        $driver = $participationRepo->comment($user);
+        return $this->render('profile/index.html.twig', ['comments' => $driver]);
     }
 
     /**
@@ -72,6 +76,51 @@ class ProfileController extends AbstractController
         }
 
         return $this->render('profile/editPassword.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/profile/nextTrips", name="profile_next_trips")
+     */
+    public function nextTrips(ParticipationRepository $participationRepo): Response
+    {
+        $trips = $participationRepo->nextTrips($this->getUser());
+        return $this->render('profile/trip.html.twig', ['trips' => $trips]);
+    }
+
+    /**
+     * @Route("/profile/passedTrips", name="profile_passed_trips")
+     */
+    public function passedTrips(ParticipationRepository $participationRepo): Response
+    {
+        $trips = $participationRepo->passedTrips($this->getUser());
+        return $this->render('profile/history.html.twig', ['trips' => $trips]);
+    }
+
+    /**
+     * @Route("/profile/comment/{id}", name="profile_comment", methods={"GET","POST"})
+     */
+    public function commment(Request $request, int $id): Response
+    {
+        $participation = new Participation();
+        /** @var \App\Entity\Participation $participation */
+        $participation = $this->getDoctrine()->getRepository(Participation::class)->findOneBy(['trip' => $id]);
+        $form = $this->createForm(CommentType::class, $participation);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // $entityManager = $this->getDoctrine()->getManager();
+            $participation = $participation->setComment($form->get('comment')->getData());
+            $participation = $participation->setNote($form->get('note')->getData());
+            // $entityManager->persist($participation);
+            $this->getDoctrine()->getManager()->flush();
+
+            $this->addFlash('message', 'Commentaire poster');
+            return $this->redirectToRoute('profile');
+        }
+
+        return $this->render('profile/comment.html.twig', [
             'form' => $form->createView(),
         ]);
     }
