@@ -5,7 +5,9 @@ namespace App\Controller;
 use App\Entity\Trip;
 use App\Form\TripType;
 use App\Form\CreateTripType;
+use App\Entity\Participation;
 use App\Repository\TripRepository;
+use App\Repository\ParticipationRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -35,6 +37,7 @@ class TripController extends AbstractController
         $trip = new Trip();
         $form = $this->createForm(CreateTripType::class, $trip);
         $form-> handleRequest($request);
+        /** @var \App\Entity\User $user */
         $user = $this->getUser();
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -63,7 +66,13 @@ class TripController extends AbstractController
             $date = $trip->getDate();
             $addressStart = $trip->getAddressStart();
             $addressEnd = $trip->getAddressEnd();
-            $trip = $tripRepository->search((string)$date, (string)$addressStart, (string)$addressEnd);
+            $currentUser = $this->getUser();
+            $trip = $tripRepository->search(
+                (string)$date,
+                (string)$addressStart,
+                (string)$addressEnd,
+                (object)$currentUser
+            );
         }
 
         return $this->render('trip/search.html.twig', [
@@ -100,5 +109,29 @@ class TripController extends AbstractController
         return $this->render('trip/show.html.twig', [
             'trip' => $trip,
         ]);
+    }
+
+    /**
+     * @Route("/trip/reserved/{id}", name="trip_reserved", methods={"GET"})
+     */
+    public function reserved(
+        TripRepository $tripRepository,
+        Trip $trip
+    ): Response {
+        $participation = new Participation();
+        $tripId = $tripRepository->find($trip->getId());
+        /** @var \App\Entity\User $user */
+        $user = $this->getUser();
+        $participation->setPassenger($user);
+        $participation->setTrip($tripId);
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($participation);
+        $entityManager->flush();
+
+        $trip = $trip->setNbPassengers($trip->getNbPassengers() - 1);
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($trip);
+        $entityManager->flush();
+        return $this->redirectToRoute('profile');
     }
 }
