@@ -3,56 +3,26 @@
 {% block title %}COWOIT{% endblock %}
 
 {% block body %}
-<div class="navbar">
-    <div class="navbarList">
-        <ul class="list">
-            <li><a href="{{ path('trip_map') }}">Charge Map</a></li>
-        </span>
-        <span class="iconList">
-            {% if app.user %}
-                <li><a href="{{ path('trip_new') }}">Ajouter un trajet</a></li>
-                <li><a href="{{ path('app_logout') }}">Se déconnecter</a></li>
-                <li><a href="{{ path('profile') }}">Profil</a></li>
-            {% else %}
-                <li><a href="{{ path('app_login') }}">Se connecter</a></li>
-                <li><a href="{{ path('app_register') }}">Créer un compte</a></li>
-            {% endif %}
-        </ul>
-        <ul class="iconList">
-            <li><a href="{{ path('trip_map') }}"><img src="{{ asset('build/images/chargeMapIcon.png') }}" alt="chargeMapIcon"></a></li>
-            {% if app.user %}
-                <li><a href="{{ path('trip_new') }}"><img src="{{ asset('build/images/newTripIcon.png') }}" alt="newTripIcon"></a></li>
-                <li><a href="{{ path('profile') }}"><img src="{{ asset('build/images/loginIcon.png') }}" alt="profileIcon"></a></li>
-                <li><a href="{{ path('app_logout') }}"><img src="{{ asset('build/images/logoutIcon.png') }}" alt="logoutIcon"></a></li>
-            {% else %}
-                <li><a href="{{ path('app_login') }}"><img src="{{ asset('build/images/loginIcon.png') }}" alt="loginIcon"></a></li>
-                <li><a href="{{ path('app_register') }}"><img src="{{ asset('build/images/signinIcon.png') }}" alt="signinIcon"></a></li>
-            {% endif %}
-        </ul>
-    </div>
-</div>
+  <div class="form">
+      {{ form_start(form) }}
+      {{ form_label(form.date) }}
+      {{ form_widget(form.date) }}
+      {{ form_label(form.addressStart) }}
+      {{ form_widget(form.addressStart) }}
+      {{ form_label(form.addressEnd) }}
+      {{ form_widget(form.addressEnd) }}
+      {{ form_row(form._token) }}
+          <button>{{ button_label|default('Rechercher') }}</button>
+      {{ form_end(form, {'render_rest': false}) }}
+  </div>
 
-
-<div class="form">
-    {{ form_start(form) }}
-    {{ form_label(form.date) }}
-    {{ form_widget(form.date) }}
-    {{ form_label(form.addressStart) }}
-    {{ form_widget(form.addressStart) }}
-    {{ form_label(form.addressEnd) }}
-    {{ form_widget(form.addressEnd) }}
-    {{ form_row(form._token) }}
-        <button class="add-trip-button">{{ button_label|default('Rechercher') }}</button>
-    {{ form_end(form, {'render_rest': false}) }}
-</div>
-
-{% for trip in trips %}
-<ul>
-    {{ trip.date }}
-    {{ trip.addressStart }}
-    {{ trip.addressEnd }}
-    <a href="{{ path('trip_show', {'id': trip.id}) }}">Info</a>
-</ul>
+  {% for trip in trips %}
+  <ul>
+      {{ trip.date }}
+      {{ trip.addressStart }}
+      {{ trip.addressEnd }}
+      <a href="{{ path('trip_show', {'id': trip.id}) }}">Info</a>
+  </ul>
 {% endfor %}
 
 {% endblock %}
