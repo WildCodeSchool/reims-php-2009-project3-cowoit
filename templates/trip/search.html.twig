@@ -3,20 +3,7 @@
 {% block title %}COWOIT{% endblock %}
 
 {% block body %}
-<div class="navbar">
-    <div class="navbarList">
-        <span class="list">
-            <li><a href="{{ path('trip_new') }}">Ajouter un trajet</a></li>
-            <li><a href="{{ path('trip_history') }}">Historique</a></li>
-            <li><a href="{{ path('trip_map') }}">Charge Map</a></li>
-        </span>
-        <span class="iconList">
-            <li><a href="{{ path('trip_map') }}"><img src="{{ asset('build/images/chargeMapIcon.png') }}" alt="chargeMapIcon"></a></li>
-            <li><a href="{{ path('trip_history') }}"><img src="{{ asset('build/images/historiqueIcon.png') }}" alt="historiqueIcon"></a></li>
-            <li><a href="{{ path('trip_new') }}"><img src="{{ asset('build/images/newTripIcon.png') }}" alt="newTripIcon"></a></li>
-        </span>
-    </div>
-</div>
+
 
 
 <div class="form">
@@ -28,7 +15,7 @@
     {{ form_label(form.addressEnd) }}
     {{ form_widget(form.addressEnd) }}
     {{ form_row(form._token) }}
-        <button class="add-trip-button">{{ button_label|default('Rechercher') }}</button>
+        <button>{{ button_label|default('Rechercher') }}</button>
     {{ form_end(form, {'render_rest': false}) }}
 </div>
 

@@ -1,0 +1,12 @@
+{% block header %}
+    <div class="navbar">
+        <a href="/"><img src="{{ asset('build/images/cowoitLogo.png') }}" alt="cowoit logo" class="cowoit-logo"/></a>
+        <ul class="menu">
+            <li><a href="#">Rechercher</a></li>
+            <li><a href="{{ path('trip_new') }}">Proposer un trajet</a></li>
+            <li><a href="{{ path('trip_map') }}">Charge map</a></li>
+            <li><a href="{{ path('app_register')}}">Inscription</a></li>
+            <li><a href="{{ path('app_login')}}">Connexion</a></li>
+        </ul>
+    </div>
+{% endblock %}

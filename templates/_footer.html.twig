@@ -1,0 +1,20 @@
+{% block footer %}
+    <nav class="navbar-footer">
+        <a href="{{ path('trip_map') }}" class="navbar-link">
+        <i class="material-icons navbar-icon">ev_station</i>
+        <span class="navbar-text">Charge map</span>
+        </a>
+        <a href="{{ path('trip_new') }}" class="navbar-link">
+        <i class="material-icons navbar-icon">electric_car</i>
+        <span class="navbar-text">Trajets</span>
+        </a>
+        <a href="#" class="navbar-link">
+        <i class="material-icons navbar-icon">search</i>
+        <span class="navbar-text">Rechercher</span>
+        </a>
+        <a href="/profile" class="navbar-link">
+        <i class="material-icons navbar-icon">account_circle</i>
+        <span class="navbar-text">Profil</span>
+        </a>
+    </nav>
+{% endblock %}
