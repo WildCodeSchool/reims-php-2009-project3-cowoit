@@ -51,7 +51,7 @@ class TripRepository extends ServiceEntityRepository
     /**
      * @return Trip[]
      */
-    public function search(string $date, string $addressStart, string $addressEnd, object $currentUser): array
+    public function search(string $date, string $addressStart, string $addressEnd, ?object $currentUser): array
     {
         return $this->createQueryBuilder('t')
             ->where("t.addressStart  = :addressStart")
@@ -59,7 +59,7 @@ class TripRepository extends ServiceEntityRepository
             ->andWhere("t.date LIKE :date")
             ->andWhere("t.date  >= CURRENT_DATE()")
             ->andWhere("t.nbPassengers  > 0")
-            ->andWhere("t.Driver  != :currentUser")
+            ->andWhere("t.Driver != :currentUser OR :currentUser IS NULL")
             ->setParameter('addressStart', $addressStart)
             ->setParameter('addressEnd', $addressEnd)
             ->setParameter('date', '%' . $date . '%')
