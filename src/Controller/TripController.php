@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class TripController extends AbstractController
 {
@@ -71,7 +72,7 @@ class TripController extends AbstractController
                 (string)$date,
                 (string)$addressStart,
                 (string)$addressEnd,
-                (object)$currentUser
+                $currentUser
             );
         }
 
@@ -113,6 +114,7 @@ class TripController extends AbstractController
 
     /**
      * @Route("/trip/reserved/{id}", name="trip_reserved", methods={"GET"})
+     * @IsGranted("ROLE_USER")
      */
     public function reserved(
         TripRepository $tripRepository,
