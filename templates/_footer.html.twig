@@ -2,22 +2,22 @@
     <nav class="navbar-footer">
         <a href="{{ path('trip_map') }}" class="navbar-link">
         <i class="material-icons navbar-icon">ev_station</i>
-        <span class="navbar-text">Charge map</span>
+        <span>Charge map</span>
         </a>
         <a href="#" class="navbar-link">
         <i class="material-icons navbar-icon">search</i>
-        <span class="navbar-text">Rechercher</span>
+        <span>Rechercher</span>
         </a>
         {% if app.user %}
         <a href="{{ path('trip_new') }}" class="navbar-link">
             <i class="material-icons navbar-icon">electric_car</i>
-            <span class="navbar-text">Trajets</span>
+            <span>Trajets</span>
         </a>
         {% else %}
         {% endif %}
         <a href="/profile" class="navbar-link">
             <i class="material-icons navbar-icon">account_circle</i>
-            <span class="navbar-text">Profil</span>
+            <span>Profil</span>
         </a>
     </nav>
 {% endblock %}
