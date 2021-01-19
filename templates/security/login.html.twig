@@ -19,7 +19,7 @@
            value="{{ csrf_token('authenticate') }}"
     >
     <div class="row mb-2 form-card">
-        <h1 class="h3 mb-3 font-weight-normal">Je me connecte</h1>
+        <h1 class="h3 mb-3 font-weight-normal title">Je me connecte</h1>
         <div class="col-2"></div>
         <div class="col-8 text-center bg-light card shadow-lg p-3 mb-5 bg-white rounded">
             <div class="form-floating mb-3 mt-3">
@@ -35,8 +35,8 @@
                     Connexion
                 </button>
             </div> 
+            <a href="{{ path('app_register')}}">Pas encore inscrit ?</a>
         </div>
-        <div class="col-2"></div>
     </div>
     
 

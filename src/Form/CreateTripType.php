@@ -18,18 +18,47 @@ class CreateTripType extends AbstractType
     {
         $builder
             ->add('date', DateTimeType::class, [
-                'widget' => 'choice',
+                'date_widget' => 'single_text',
+                'time_widget' => 'single_text',
                 'years' => range(date('Y'), date('Y') + 3),
                 'input' => 'string',
+                'label_attr' => array(
+                    'class' => 'form-label',
+                ),
+                'attr' => array(
+                    'placeholder' => 'Date',
+                    'class' => 'form-control',
+                )
             ])
             ->add('addressStart', TextType::class, [
                 'label' => 'Départ',
+                'label_attr' => array(
+                    'class' => 'form-label',
+                ),
+                'attr' => array(
+                    'placeholder' => 'Départ',
+                    'class' => 'form-control',
+                )
             ])
             ->add('addressEnd', TextType::class, [
                 'label' => 'Arrivée',
+                'label_attr' => array(
+                    'class' => 'form-label',
+                ),
+                'attr' => array(
+                    'placeholder' => 'Arrivée',
+                    'class' => 'form-control',
+                )
             ])
             ->add('nbPassengers', IntegerType::class, [
                 'label' => 'Nombre de Passagers',
+                'label_attr' => array(
+                    'class' => 'form-label',
+                ),
+                'attr' => array(
+                    'placeholder' => 'Nombre de Passagers',
+                    'class' => 'form-control',
+                )
             ])
         ;
     }
