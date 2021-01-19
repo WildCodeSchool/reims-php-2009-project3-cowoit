@@ -5,11 +5,32 @@
 {% endblock title %}
 
 {% block body %}
-    <h1>Ajouter un trajet</h1>
-    <div>
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <input type="submit" value="Ajouter mon trajet">
-    {{ form_end(form) }}
+
+    <div class="row mb-2 form-card">
+        <h1 class="h3 mb-3 font-weight-normal title">Ajouter un trajet</h1>
+        <div class="col-2"></div>
+        <div class="col-8 text-center bg-light card shadow-lg p-3 mb-5 bg-white rounded">
+            {{ form_start(form) }}
+            <div class="form-floating mb-3">
+                {{ form_widget(form.date) }}
+                {{ form_label(form.date) }}
+              </div>
+            <div class="form-floating mb-3">
+                {{ form_widget(form.addressStart) }}
+                {{ form_label(form.addressStart) }}
+            </div>
+            <div class="form-floating mb-3">
+              {{ form_widget(form.addressEnd) }}
+              {{ form_label(form.addressEnd) }}
+            </div>
+            <div class="form-floating mb-3">
+              {{ form_widget(form.nbPassengers) }}
+              {{ form_label(form.nbPassengers) }}
+            </div>
+            <div class="mb-2">
+                <button type="submit" class="btn btn-outline-success">Ajouter mon trajet</button>{{ button_label|default('') }}</button>
+                {{ form_end(form) }}
+            </div>
+        </div>
     </div>
 {% endblock body %}

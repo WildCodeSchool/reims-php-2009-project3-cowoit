@@ -1,23 +1,43 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Inscription{% endblock %}
 
 {% block body %}
     {% for flashError in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">{{ flashError }}</div>
     {% endfor %}
 
-    <h1>Register</h1>
-
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.firstname) }}
-        {{ form_row(registrationForm.lastname) }}
-        {{ form_row(registrationForm.agreeTerms) }}
-
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+    <div class="row mb-2 form-card">
+        <h1 class="h3 mb-3 font-weight-normal title">Inscription</h1>
+        <div class="col-2"></div>
+        <div class="col-8 text-center bg-light card shadow-lg p-3 mb-5 bg-white rounded">
+            {{ form_start(registrationForm) }}
+            <div class="form-floating mb-3">
+                {{ form_widget(registrationForm.email) }}
+                {{ form_label(registrationForm.email) }}
+              </div>
+            <div class="form-floating mb-3">
+                {{ form_widget(registrationForm.plainPassword, {
+                    label: 'Password'
+                }) }}
+                {{ form_label(registrationForm.plainPassword) }}
+            </div>
+            <div class="form-floating mb-3">
+              {{ form_widget(registrationForm.firstname) }}
+              {{ form_label(registrationForm.firstname) }}
+            </div>
+            <div class="form-floating mb-3">
+              {{ form_widget(registrationForm.lastname) }}
+              {{ form_label(registrationForm.lastname) }}
+            </div>
+            <div class="form mb-3">
+                {{ form_widget(registrationForm.agreeTerms) }}
+                {{ form_label(registrationForm.agreeTerms) }}
+              </div>
+            <div class="mb-2">
+                <button type="submit" class="btn btn-outline-success">Inscription</button>{{ button_label|default('') }}</button>
+                {{ form_end(registrationForm) }}
+            </div>
+        </div>
+    </div>
 {% endblock %}

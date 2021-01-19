@@ -2,7 +2,7 @@ html, body {
   /*width: 100%;*/
   height: 100%;
   margin: 0;
-  background-color: #C2F2EB;
+  background-color: #f2f2f2;
 
 }
 html {
@@ -11,9 +11,9 @@ html {
 .navbar {
   display: flex;
   justify-content: space-between;
-  height: 5em;
   line-height: 70px;
   background-color: #32BAA6;
+  padding: 0;
 }
 .cowoit-logo {
   margin: 0 1em;
@@ -21,9 +21,10 @@ html {
   width: 8em;
 }
 .menu {
-  margin-right: 1em;
+  margin: 0 ;
   display: flex;
   white-space: nowrap;
+
 }
 .menu a {
   clear: right;
@@ -40,6 +41,23 @@ html {
 }
 .navbar-footer {
   display: none;
+}
+
+.row {
+  margin: 0;
+}
+
+.form-card{
+  margin-top: 3em;
+}
+
+.title {
+  text-align: center;
+}
+
+.form-card a {
+  text-decoration: none;
+  color: #212529;
 }
 
 @media only screen and (max-width: 800px) {
@@ -62,6 +80,7 @@ html {
     background-color: #32baa6;
     display: flex;
     overflow-x: auto;
+    justify-content: space-evenly;
   }
 
   .navbar-link {
@@ -69,7 +88,6 @@ html {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    flex-grow: 1;
     min-width: 50px;
     overflow: hidden;
     white-space: nowrap;
@@ -81,5 +99,32 @@ html {
 
   .navbar-link:hover {
     color: #D2E605;
+  }
+
+  /* Profile - mobile */
+
+  .profile{
+    text-align: center;
+    margin-top: 2em;
+    height: auto;
+  }
+
+  .trip a{
+    margin-bottom: 10px;
+    text-align: center;
+    width: 45%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .trip{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+  }
+
+  .profile h1 {
+    margin-bottom: 1.6em;
   }
 }

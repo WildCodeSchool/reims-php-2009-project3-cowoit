@@ -3,8 +3,8 @@
 {% block title %}COWOIT{% endblock %}
 
 {% block body %}
-<img src="{{ asset('build/images/imgcowoit.jpg') }}" alt="" class="max-height">
 <div class="row mb-2 form-card">
+    <h1 class="h3 mb-3 font-weight-normal title">Rechercher votre trajet</h1>
     <div class="col-2"></div>
     <div class="col-8 text-center bg-light card shadow-lg p-3 mb-5 bg-white rounded">
         {{ form_start(form) }}
@@ -26,7 +26,6 @@
             {{ form_end(form, {'render_rest': false}) }}   
         </div> 
     </div>
-    <div class="col-2"></div>
 </div>
 
 {% for trip in trips %}
