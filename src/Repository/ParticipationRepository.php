@@ -83,15 +83,15 @@ class ParticipationRepository extends ServiceEntityRepository
     /**
      * @return Participation[]
      */
-    public function comment(?object $currentUser): array
+    public function comment(int $user): array
     {
         return $this->createQueryBuilder('p')
             ->select('p, t')
             ->join('p.trip', 't')
             ->where("p.trip  = t.id")
-            ->andWhere("t.Driver  = :currentUser")
+            ->andWhere("t.Driver  = :user")
             ->andWhere("p.note  IS NOT NULL")
-            ->setParameter('currentUser', $currentUser)
+            ->setParameter('user', $user)
             ->getQuery()
             ->getResult()
         ;
@@ -103,7 +103,24 @@ class ParticipationRepository extends ServiceEntityRepository
     public function avgNote(int $user): array
     {
         return $this->createQueryBuilder('p')
-            ->select('avg(p.note) as score_avg')
+            ->select('avg(p.note) as note_avg')
+            ->join('p.trip', 't')
+            ->where("p.trip  = t.id")
+            ->andWhere("t.Driver  = :user")
+            ->andWhere("p.note  IS NOT NULL")
+            ->setParameter('user', $user)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+
+    /**
+     * @return Participation[]
+     */
+    public function countNote(int $user): array
+    {
+        return $this->createQueryBuilder('p')
+            ->select('count(p.note) as note_count')
             ->join('p.trip', 't')
             ->where("p.trip  = t.id")
             ->andWhere("t.Driver  = :user")
