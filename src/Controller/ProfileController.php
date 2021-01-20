@@ -9,6 +9,7 @@ use App\Entity\Participation;
 use App\Form\EditProfileType;
 use App\Form\EditPasswordType;
 use App\Repository\TripRepository;
+use App\Repository\UserRepository;
 use App\Repository\ParticipationRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,13 +20,24 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class ProfileController extends AbstractController
 {
     /**
-     * @Route("/profile", name="profile")
+     * @Route("/user/{id}", name="profile")
      */
-    public function index(ParticipationRepository $participationRepo): Response
-    {
-        $user = $this->getUser();
-        $driver = $participationRepo->comment($user);
-        return $this->render('profile/index.html.twig', ['comments' => $driver]);
+    public function profile(
+        UserRepository $userRepository,
+        ParticipationRepository $participationRepo,
+        TripRepository $tripRepository,
+        int $id
+    ): Response {
+        $noteAvg = $participationRepo->avgNote($id);
+        $noteCount = $participationRepo->countNote($id);
+        $allTrips = $tripRepository->countTrips($id);
+        $user = $userRepository->find($id);
+        return $this->render('profile/index.html.twig', [
+            'noteAvg' => number_format(floatval($noteAvg['note_avg']), 1, '.', ' '),
+            'noteCount' => $noteCount['note_count'],
+            'allTrips' => $allTrips['all_trips'],
+            'user' => $user,
+        ]);
     }
 
     /**
@@ -101,7 +113,7 @@ class ProfileController extends AbstractController
     /**
      * @Route("/profile/comment/{id}", name="profile_comment", methods={"GET","POST"})
      */
-    public function commment(Request $request, int $id): Response
+    public function newCommment(Request $request, int $id): Response
     {
         $participation = new Participation();
         /** @var \App\Entity\Participation $participation */
@@ -120,8 +132,17 @@ class ProfileController extends AbstractController
             return $this->redirectToRoute('profile');
         }
 
-        return $this->render('profile/comment.html.twig', [
+        return $this->render('profile/addComment.html.twig', [
             'form' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/user/{id}/reviews", name="profile_show_comment")
+     */
+    public function showComment(ParticipationRepository $participationRepo, int $id): Response
+    {
+        $comments = $participationRepo->comment($id);
+        return $this->render('profile/showComment.html.twig', ['comments' => $comments]);
     }
 }
