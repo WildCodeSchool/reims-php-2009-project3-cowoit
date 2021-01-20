@@ -1,15 +1,17 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    Ajouter un trajet - Cowoit
+    Proposer un trajet - Cowoit
 {% endblock title %}
 
 {% block body %}
-
+    <section class="new-trip-block">
+        <img src="{{ asset('build/images/carpooling2.png') }}" alt="carpool illustration" class="carpool-illustration"/>
+        <h1 class="h3 mb-3 font-weight-normal new-trip-title">Proposer un trajet</h1>
+    </section>
     <div class="row mb-2 form-card">
-        <h1 class="h3 mb-3 font-weight-normal title">Ajouter un trajet</h1>
         <div class="col-1"></div>
-        <div class="col-10 text-center bg-light card shadow-lg p-3 mb-5 bg-white rounded">
+        <div class="col-10 text-center bg-light card shadow p-3 mb-5 bg-white rounded new-trip-form">
             {{ form_start(form) }}
             <div class="form-floating mb-3">
                 {{ form_widget(form.date) }}

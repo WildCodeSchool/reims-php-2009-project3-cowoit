@@ -1,20 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Result{% endblock %}
+{% block title %}Résultats{% endblock %}
 
 {% block body %}
     <div>
         <ul>
             Informations Conducteur :
-            <li>Prenom : {{ trip.driver.firstname }}</li>
-            <li>Nom : {{ trip.driver.lastname }}</li>
+            <li>Prénom: {{ trip.driver.firstname }}</li>
+            <li>Nom: {{ trip.driver.lastname }}</li>
             <br><br>
-            Informations Voyage :
-            <li>Date : {{ trip.date }}</li>
-            <li>Depart : {{ trip.addressStart }}</li>
-            <li>Arrivee : {{ trip.addressEnd }}</li>
-            <li>Passagers Possible : {{ trip.nbPassengers }}</li>
+            Informations Voyage:
+            <li>Date: {{ trip.date }}</li>
+            <li>Départ: {{ trip.addressStart }}</li>
+            <li>Arrivée: {{ trip.addressEnd }}</li>
+            <li>Passagers possibles: {{ trip.nbPassengers }}</li>
         </ul>
-        <a href="{{ path('trip_reserved', {'id': trip.id}) }}">Reserve</a>
+        <a href="{{ path('trip_reserved', {'id': trip.id}) }}">Réserver</a>
     </div>
 {% endblock %}

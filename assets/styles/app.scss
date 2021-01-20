@@ -1,18 +1,13 @@
 html, body {
-  /*width: 100%;*/
   height: 100%;
   margin: 0;
-  background-color: #f2f2f2;
+  background-color: #FFFFFF;
+}
 
-}
-html {
-  font-family: "helvetica neue", sans-serif;
-}
+// Header navbar //
+
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  line-height: 70px;
-  background-color: #32BAA6;
+  background-color: #FFFFFF;
   padding: 0;
 }
 .cowoit-logo {
@@ -20,28 +15,97 @@ html {
   padding: 0% 1% 0 0%;
   width: 8em;
 }
-.menu {
-  margin: 0 ;
-  display: flex;
-  white-space: nowrap;
-
-}
-.menu a {
-  clear: right;
-  text-decoration: none;
-  color: #FFFFFF;
-  margin: 0 2em;
-  line-height: 70px;
-}
-.menu a:hover {
-  color: #D2E605;
-}
-.menu li {
+.navbar-profile {
   list-style-type: none;
 }
+
+// Navbar footer - mobile //
+
 .navbar-footer {
-  display: none;
+  position: fixed;
+  padding-top: 0.5em;
+  bottom: 0;
+  width: 100%;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+  background-color: #FFFFFF;
+  display: flex;
+  overflow-x: auto;
+  justify-content: space-evenly;
 }
+
+.navbar-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 50px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 0.1s ease-in-out;
+  color: #FFFFFF;
+}
+
+.material-icons {
+  color:  #32baa6;
+  font-size: 2.5em;
+}
+
+.navbar-caption {
+  color: #32baa6;
+}
+
+.navbar-link:hover {
+  color: #D2E605;
+}
+
+// Index/search page //
+
+.search-form {
+  margin-top: -4em;
+}
+
+.carpool-illustration {
+  width: 100%;
+}
+
+.presentation-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.index-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 7vw;
+  font-weight: bold;
+  color: #2ea393;
+  position: absolute;
+  top: 12%;
+  padding: 10px;
+}
+
+// New trip section //
+
+.new-trip-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 7vw;
+  font-weight: bold;
+  color: #FFFFFF;
+  text-shadow: 1px 1px 5px black;
+  position: absolute;
+}
+.new-trip-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.new-trip-form {
+  margin-top: -3.5em;
+}
+
+// Forms //
 
 .row {
   margin: 0;
@@ -51,80 +115,34 @@ html {
   margin-top: 3em;
 }
 
-.title {
-  text-align: center;
-}
-
 .form-card a {
   text-decoration: none;
   color: #212529;
 }
 
-@media only screen and (max-width: 800px) {
-  .navbar {
-    display: flex;
-    justify-content: space-around;
-  }
-  .menu {
-    display: none;
-  }
+// Profile - mobile //
 
-  /* Navbar footer - mobile */
+.profile{
+  text-align: center;
+  margin-top: 2em;
+  height: auto;
+}
 
-  .navbar-footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    height: 55px;
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
-    background-color: #32baa6;
-    display: flex;
-    overflow-x: auto;
-    justify-content: space-evenly;
-  }
+.trip a{
+  margin-bottom: 10px;
+  text-align: center;
+  width: 45%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
 
-  .navbar-link {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-width: 50px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-decoration: none;
-    -webkit-tap-highlight-color: transparent;
-    transition: background-color 0.1s ease-in-out;
-    color: #FFFFFF;
-  }
+.trip{
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
 
-  .navbar-link:hover {
-    color: #D2E605;
-  }
-
-  /* Profile - mobile */
-
-  .profile{
-    text-align: center;
-    margin-top: 2em;
-    height: auto;
-  }
-
-  .trip a{
-    margin-bottom: 10px;
-    text-align: center;
-    width: 45%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-  }
-
-  .trip{
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-  }
-
-  .profile h1 {
-    margin-bottom: 1.6em;
-  }
+.profile h1 {
+  margin-bottom: 1.6em;
 }
