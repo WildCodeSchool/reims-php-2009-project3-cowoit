@@ -3,6 +3,27 @@
 {% block title %}Modification du profil de {{ app.user.firstname }} {{ app.user.lastname }}{% endblock %}
 
 {% block body %}
-<h1>Modification du profil de {{ app.user.firstname }} {{ app.user.lastname }}</h1>
-    {{ form(form) }}
+    <div class="row mb-2 form-card">
+        <h1 class="h3 mb-3 font-weight-normal title">Modification du profil de {{ app.user.firstname }} {{ app.user.lastname }}</h1>
+        <div class="col-2"></div>
+        <div class="col-8 text-center bg-light card shadow-lg p-3 mb-5 bg-white rounded">
+            {{ form_start(form) }}
+            <div class="form-floating mb-3">
+                {{ form_widget(form.email) }}
+                {{ form_label(form.email) }}
+              </div>
+            <div class="form-floating mb-3">
+              {{ form_widget(form.firstname) }}
+              {{ form_label(form.firstname) }}
+            </div>
+            <div class="form-floating mb-3">
+              {{ form_widget(form.lastname) }}
+              {{ form_label(form.lastname) }}
+            </div>
+            <div class="mb-2">
+                <button type="submit" class="btn btn-outline-success">Enregistrer</button>{{ button_label|default('') }}</button>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
 {% endblock %}
