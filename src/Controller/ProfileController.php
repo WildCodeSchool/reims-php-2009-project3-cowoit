@@ -28,13 +28,14 @@ class ProfileController extends AbstractController
         TripRepository $tripRepository,
         int $id
     ): Response {
-        $avg = $participationRepo->avgNote($id);
-        $all = $tripRepository->countTrips($id);
+        $noteAvg = $participationRepo->avgNote($id);
+        $noteCount = $participationRepo->countNote($id);
+        $allTrips = $tripRepository->countTrips($id);
         $user = $userRepository->find($id);
-        // dd($avg['score_avg']);
         return $this->render('profile/index.html.twig', [
-            'avg' => $avg['score_avg'],
-            'count' => $all['all_trips'],
+            'noteAvg' => number_format(floatval($noteAvg['note_avg']), 1, '.', ' '),
+            'noteCount' => $noteCount['note_count'],
+            'allTrips' => $allTrips['all_trips'],
             'user' => $user,
         ]);
     }
@@ -131,8 +132,17 @@ class ProfileController extends AbstractController
             return $this->redirectToRoute('profile');
         }
 
-        return $this->render('profile/comment.html.twig', [
+        return $this->render('profile/addComment.html.twig', [
             'form' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/user/{id}/reviews", name="profile_show_comment")
+     */
+    public function commentShow(ParticipationRepository $participationRepo, int $id): Response
+    {
+        $comments = $participationRepo->comment($id);
+        return $this->render('profile/showComment.html.twig', ['comments' => $comments]);
     }
 }
