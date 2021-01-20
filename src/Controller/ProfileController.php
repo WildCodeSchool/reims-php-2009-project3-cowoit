@@ -140,7 +140,7 @@ class ProfileController extends AbstractController
     /**
      * @Route("/user/{id}/reviews", name="profile_show_comment")
      */
-    public function commentShow(ParticipationRepository $participationRepo, int $id): Response
+    public function showComment(ParticipationRepository $participationRepo, int $id): Response
     {
         $comments = $participationRepo->comment($id);
         return $this->render('profile/showComment.html.twig', ['comments' => $comments]);
