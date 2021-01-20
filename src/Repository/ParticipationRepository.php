@@ -96,4 +96,21 @@ class ParticipationRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+
+    /**
+     * @return Participation[]
+     */
+    public function avgNote(int $user): array
+    {
+        return $this->createQueryBuilder('p')
+            ->select('avg(p.note) as score_avg')
+            ->join('p.trip', 't')
+            ->where("p.trip  = t.id")
+            ->andWhere("t.Driver  = :user")
+            ->andWhere("p.note  IS NOT NULL")
+            ->setParameter('user', $user)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
 }

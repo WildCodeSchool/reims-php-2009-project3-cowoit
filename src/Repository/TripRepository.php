@@ -80,4 +80,19 @@ class TripRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+
+    /**
+     * @return Trip[]
+     */
+    public function countTrips(int $user)
+    {
+        return $this->createQueryBuilder('t')
+            ->select('count(t.Driver) as all_trips')
+            ->where("t.date  < CURRENT_DATE()")
+            ->andWhere("t.Driver  = :user")
+            ->setParameter('user', $user)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
 }
