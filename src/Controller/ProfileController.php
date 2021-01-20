@@ -113,7 +113,7 @@ class ProfileController extends AbstractController
     /**
      * @Route("/profile/comment/{id}", name="profile_comment", methods={"GET","POST"})
      */
-    public function commment(Request $request, int $id): Response
+    public function newCommment(Request $request, int $id): Response
     {
         $participation = new Participation();
         /** @var \App\Entity\Participation $participation */
