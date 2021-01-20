@@ -8,20 +8,20 @@
 {% endfor %}
 <div class="profile">
     <h1>Profil de {{ user.firstname }} {{ user.lastname }}</h1>
-    <p>Nom : {{ user.lastname }}</p>
-    <p>Prénom : {{ user.firstname }}</p>
-    <p>E-mail : {{ user.email }}</p>
-    <a href="{{path('profile_show_comment', {'id': user.id})}}"><p>Notes : {{ noteAvg }} / 5.0 - {{ noteCount }} avis</p></a>
-    <p>Trajets Publiés : {{ allTrips }}</p>
+    <p>Nom: {{ user.lastname }}</p>
+    <p>Prénom: {{ user.firstname }}</p>
+    <p>E-mail: {{ user.email }}</p>
+    <a href="{{path('profile_show_comment', {'id': user.id})}}"><p>Notes: {{ noteAvg }} / 5.0 - {{ noteCount }} avis</p></a>
+    <p>Trajets Publiés: {{ allTrips }}</p>
     {% if app.user is not null %}
         {% if app.user.id == user.id %}
-        <div class="trip">
-            <a class="btn btn-outline-success" href="{{ path('profile_next_trips') }}">Prochain Trajet</a>
-            <a class="btn btn-outline-success" href="{{ path('profile_passed_trips') }}">Trajet Passé</a>
-            <a class="btn btn-outline-success" href="{{ path('profile_edit') }}">Modifier le profil</a>
-            <a class="btn btn-outline-success" href="{{ path('profile_edit_password') }}">Modifier le mot de passe</a>
-            <a class="btn btn-outline-success" href="{{ path('app_logout') }}">Déconnexion</a>
-        </div>
+          <div class="trip">
+              <a class="btn btn-outline-success" href="{{ path('profile_next_trips') }}">Prochain Trajet</a>
+              <a class="btn btn-outline-success" href="{{ path('profile_passed_trips') }}">Trajets Passés</a>
+              <a class="btn btn-outline-success" href="{{ path('profile_edit') }}">Modifier le profil</a>
+              <a class="btn btn-outline-success" href="{{ path('profile_edit_password') }}">Modifier le mot de passe</a>
+              <a class="btn btn-outline-success" href="{{ path('app_logout') }}">Déconnexion</a>
+          </div>
         {% endif %}
     {% endif %}
 </div>

@@ -1,27 +1,18 @@
 {% block footer %}
     <nav class="navbar-footer">
         <a href="{{ path('trip_map') }}" class="navbar-link">
-        <i class="material-icons navbar-icon">ev_station</i>
-        <span>Charge map</span>
+          <i class="material-icons">ev_station</i>
+          <span class="navbar-caption">Charge map</span>
         </a>
         <a href="#" class="navbar-link">
-        <i class="material-icons navbar-icon">search</i>
-        <span>Rechercher</span>
+          <i class="material-icons">search</i>
+          <span class="navbar-caption">Rechercher</span>
         </a>
         {% if app.user %}
-        <a href="{{ path('trip_new') }}" class="navbar-link">
-            <i class="material-icons navbar-icon">electric_car</i>
-            <span>Trajets</span>
-        </a>
-        <a href="{{ path('profile', {'id': app.user.id}) }}" class="navbar-link">
-            <i class="material-icons navbar-icon">account_circle</i>
-            <span>Profil</span>
-        </a>
-        {% else %}
-        <a href="{{ path('app_login') }}" class="navbar-link">
-            <i class="material-icons navbar-icon">account_circle</i>
-            <span>Connexion</span>
-        </a>
+          <a href="{{ path('trip_new') }}" class="navbar-link">
+              <i class="material-icons">add_box</i>
+              <span class="navbar-caption">Trajets</span>
+          </a>
         {% endif %}
     </nav>
 {% endblock %}

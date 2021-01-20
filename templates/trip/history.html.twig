@@ -1,17 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}History{% endblock %}
+{% block title %}Historique des trajets - Cowoit{% endblock %}
 
 {% block body %}
 <div>
-   <h1>Historique</h1>
+   <h1>Trajets passés</h1>
 
    <div>
       {% for trip in history %}
          <li>
-            <p> <span>Départ :</span> {{ trip.addressStart }}</p>
-            <p><span>Arrivée :</span> {{ trip.addressEnd }}</p>
-            <p><span>Date :</span> {{ trip.date }}</p>
+            <p> <span>Départ:</span> {{ trip.addressStart }}</p>
+            <p><span>Arrivée:</span> {{ trip.addressEnd }}</p>
+            <p><span>Date:</span> {{ trip.date }}</p>
          </li>
       {% endfor %}
    </div>
