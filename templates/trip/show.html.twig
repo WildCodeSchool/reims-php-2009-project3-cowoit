@@ -8,6 +8,7 @@
             Informations Conducteur :
             <li>Prenom : {{ trip.driver.firstname }}</li>
             <li>Nom : {{ trip.driver.lastname }}</li>
+            <a href="{{ path('profile', {'id': trip.driver.id}) }}">Voir</a>
             <br><br>
             Informations Voyage :
             <li>Date : {{ trip.date }}</li>

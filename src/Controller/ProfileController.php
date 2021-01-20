@@ -9,6 +9,7 @@ use App\Entity\Participation;
 use App\Form\EditProfileType;
 use App\Form\EditPasswordType;
 use App\Repository\TripRepository;
+use App\Repository\UserRepository;
 use App\Repository\ParticipationRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,13 +20,23 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class ProfileController extends AbstractController
 {
     /**
-     * @Route("/profile", name="profile")
+     * @Route("/user/{id}", name="profile")
      */
-    public function index(ParticipationRepository $participationRepo): Response
-    {
-        $user = $this->getUser();
-        $driver = $participationRepo->comment($user);
-        return $this->render('profile/index.html.twig', ['comments' => $driver]);
+    public function profile(
+        UserRepository $userRepository,
+        ParticipationRepository $participationRepo,
+        TripRepository $tripRepository,
+        int $id
+    ): Response {
+        $avg = $participationRepo->avgNote($id);
+        $all = $tripRepository->countTrips($id);
+        $user = $userRepository->find($id);
+        // dd($avg['score_avg']);
+        return $this->render('profile/index.html.twig', [
+            'avg' => $avg['score_avg'],
+            'count' => $all['all_trips'],
+            'user' => $user,
+        ]);
     }
 
     /**

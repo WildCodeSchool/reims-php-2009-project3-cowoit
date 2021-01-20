@@ -13,11 +13,15 @@
             <i class="material-icons navbar-icon">electric_car</i>
             <span>Trajets</span>
         </a>
-        {% else %}
-        {% endif %}
-        <a href="/profile" class="navbar-link">
+        <a href="{{ path('profile', {'id': app.user.id}) }}" class="navbar-link">
             <i class="material-icons navbar-icon">account_circle</i>
             <span>Profil</span>
         </a>
+        {% else %}
+        <a href="{{ path('app_login') }}" class="navbar-link">
+            <i class="material-icons navbar-icon">account_circle</i>
+            <span>Connexion</span>
+        </a>
+        {% endif %}
     </nav>
 {% endblock %}
