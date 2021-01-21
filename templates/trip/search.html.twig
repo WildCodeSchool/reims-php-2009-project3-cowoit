@@ -31,13 +31,16 @@
         </div>
     </div>
 
-{% for trip in trips %}
-<ul>
-    {{ trip.date }}
-    {{ trip.addressStart }}
-    {{ trip.addressEnd }}
-    <a href="{{ path('trip_show', {'id': trip.id}) }}">Infos</a>
-</ul>
-{% endfor %}
+    <div class="search">
+        {% for trip in trips %}
+        <a href="{{ path('trip_show', {'id': trip.id}) }}">
+            <div class="profile-search">
+                    <p class="navbar-profile">{{ trip.date }}</p>
+                    <p class="navbar-profile">{{ trip.addressStart }}</p>
+                    <p class="navbar-profile">{{ trip.addressEnd }}</p>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
 
 {% endblock %}

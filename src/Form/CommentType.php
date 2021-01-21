@@ -16,16 +16,32 @@ class CommentType extends AbstractType
     {
         $builder
             ->add('note', ChoiceType::class, [
+                'placeholder' => 'Noter votre trajet',
                 'choices' => [
-                    '1/5' => 1,
-                    '2/5' => 2,
-                    '3/5' => 3,
-                    '4/5' => 4,
-                    '5/5' => 5,
-                ]
+                    'Parfait' => 5,
+                    'Très bien' => 4,
+                    'Bien' => 3,
+                    'Décevant' => 2,
+                    'À éviter' => 1,
+                ],
+                'label_attr' => array(
+                    'class' => 'form-label',
+                ),
+                'attr' => array(
+                    'placeholder' => 'Note',
+                    'class' => 'form-control',
+                )
             ])
-            ->add('comment', TextareaType::class)
-            ->add('submit', SubmitType::class)
+            ->add('comment', TextareaType::class, [
+                'label' => 'Commentaire',
+                'label_attr' => array(
+                    'class' => 'form-label',
+                ),
+                'attr' => array(
+                    'placeholder' => 'Commentaire',
+                    'class' => 'form-control',
+                )
+            ])
         ;
     }
 

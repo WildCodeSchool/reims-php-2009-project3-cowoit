@@ -3,13 +3,15 @@
 {% block title %}Trajet passés{% endblock %}
 
 {% block body %}
-<h1>Trajet passés</h1>
-{% for trip in trips %}
-    <p> <span class="bold">Départ:</span> {{ trip.trip.addressStart }}</p>
-    <p><span class="bold">Arrivée:</span> {{ trip.trip.addressEnd }}</p>
-    <p><span class="bold">Date:</span> {{ trip.trip.date }}</p>
-    <a href="{{ path('profile_comment', {'id': trip.trip.id}) }}">Laisser un commentaire</a>
-    <br>
-    <br>
-{% endfor %}
+<div class="profile">
+    <h1>Trajet passés</h1>
+    {% for trip in trips %}
+        <p> <span class="bold">Départ:</span> {{ trip.trip.addressStart }}</p>
+        <p><span class="bold">Arrivée:</span> {{ trip.trip.addressEnd }}</p>
+        <p><span class="bold">Date:</span> {{ trip.trip.date }}</p>
+        <a href="{{ path('profile_comment', {'id': app.user.id ,'commentId': trip.trip.id}) }}">Laisser un commentaire</a>
+        <br>
+        <hr>
+    {% endfor %}
+</div>
 {% endblock %}

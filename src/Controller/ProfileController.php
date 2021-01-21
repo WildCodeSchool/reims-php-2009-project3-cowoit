@@ -41,9 +41,9 @@ class ProfileController extends AbstractController
     }
 
     /**
-     * @Route("/profile/edit", name="profile_edit")
+     * @Route("/user/{id}/edit", name="profile_edit")
      */
-    public function edit(Request $request): Response
+    public function edit(Request $request, int $id): Response
     {
         $user = $this->getUser();
         $form = $this->createForm(EditProfileType::class, $user);
@@ -53,7 +53,7 @@ class ProfileController extends AbstractController
             $this->getDoctrine()->getManager()->flush();
 
             $this->addFlash('message', 'Profil mis a jour');
-            return $this->redirectToRoute('profile');
+            return $this->redirect($this->generateUrl('profile', ['id' => $id]));
         }
 
         return $this->render('profile/edit.html.twig', [
@@ -62,9 +62,9 @@ class ProfileController extends AbstractController
     }
 
     /**
-     * @Route("/profile/edit/password", name="profile_edit_password")
+     * @Route("/user/{id}/edit/password", name="profile_edit_password")
      */
-    public function editPassword(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
+    public function editPassword(Request $request, UserPasswordEncoderInterface $passwordEncoder, int $id): Response
     {
         /** @var \App\Entity\User $user */
         $user = $this->getUser();
@@ -84,7 +84,7 @@ class ProfileController extends AbstractController
             $this->getDoctrine()->getManager()->flush();
 
             $this->addFlash('message', 'Mot de passe mis a jour');
-            return $this->redirectToRoute('profile');
+            return $this->redirect($this->generateUrl('profile', ['id' => $id]));
         }
 
         return $this->render('profile/editPassword.html.twig', [
@@ -111,13 +111,13 @@ class ProfileController extends AbstractController
     }
 
     /**
-     * @Route("/profile/comment/{id}", name="profile_comment", methods={"GET","POST"})
+     * @Route("/user/{id}/comment/{commentId}", name="profile_comment", methods={"GET","POST"})
      */
-    public function newCommment(Request $request, int $id): Response
+    public function newCommment(Request $request, int $id, int $commentId): Response
     {
         $participation = new Participation();
         /** @var \App\Entity\Participation $participation */
-        $participation = $this->getDoctrine()->getRepository(Participation::class)->findOneBy(['trip' => $id]);
+        $participation = $this->getDoctrine()->getRepository(Participation::class)->findOneBy(['trip' => $commentId]);
         $form = $this->createForm(CommentType::class, $participation);
         $form->handleRequest($request);
 
@@ -129,7 +129,7 @@ class ProfileController extends AbstractController
             $this->getDoctrine()->getManager()->flush();
 
             $this->addFlash('message', 'Commentaire poster');
-            return $this->redirectToRoute('profile');
+            return $this->redirect($this->generateUrl('profile', ['id' => $id]));
         }
 
         return $this->render('profile/addComment.html.twig', [
