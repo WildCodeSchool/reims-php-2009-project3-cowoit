@@ -2,11 +2,17 @@
     <div class="navbar">
         <a href="/"><img src="{{ asset('build/images/cowoitLogo.png') }}" alt="cowoit logo" class="cowoit-logo"/></a>
         <ul>
-            <li class="navbar-profile">
-                <a href="/profile" class="navbar-link">
-                    <i class="material-icons profile-icon">account_circle</i>
-                </a>
-            </li>
+            {% if app.user %}
+                <li class="navbar-profile">
+                    <a href="{{ path('profile', {'id': app.user.id}) }}" class="navbar-link">
+                        <i class="material-icons profile-icon">account_circle</i>
+                    </a>
+                {% else %}
+                    <a href="{{ path('app_login') }}" class="navbar-link">
+                            <i class="material-icons profile-icon">account_circle</i>
+                    </a>
+                </li>
+            {% endif %}
         </ul>
     </div>
 {% endblock %}
