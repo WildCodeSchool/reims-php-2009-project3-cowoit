@@ -1,21 +1,23 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Résultats{% endblock %}
+{% block title %}Annonce de covoiturage{% endblock %}
 
 {% block body %}
-    <div>
-        <ul>
-            Informations Conducteur :
-            <li>Prénom: {{ trip.driver.firstname }}</li>
-            <li>Nom: {{ trip.driver.lastname }}</li>
+    <div class="profile">
+            <h3>Informations Conducteur</h3>
+            <br>
+            <p class="navbar-profile">Prénom: {{ trip.driver.firstname }}</p>
+            <p class="navbar-profile">Nom: {{ trip.driver.lastname }}</p>
             <a href="{{ path('profile', {'id': trip.driver.id}) }}">Voir</a>
-            <br><br>
-            Informations Voyage:
-            <li>Date: {{ trip.date }}</li>
-            <li>Départ: {{ trip.addressStart }}</li>
-            <li>Arrivée: {{ trip.addressEnd }}</li>
-            <li>Passagers possibles: {{ trip.nbPassengers }}</li>
-        </ul>
+            <br>
+            <hr>
+            <br>
+            <h3>Informations Voyage</h3>
+            <br>
+            <p class="navbar-profile">Date: {{ trip.date }}</p>
+            <p class="navbar-profile">Départ: {{ trip.addressStart }}</p>
+            <p class="navbar-profile">Arrivée: {{ trip.addressEnd }}</p>
+            <p class="navbar-profile">Passagers possibles: {{ trip.nbPassengers }}</p>
         <a href="{{ path('trip_reserved', {'id': trip.id}) }}">Réserver</a>
     </div>
 {% endblock %}
