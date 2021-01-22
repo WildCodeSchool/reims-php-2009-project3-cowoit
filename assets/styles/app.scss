@@ -52,6 +52,14 @@ html, body {
   font-size: 2.5em;
 }
 
+.profile-icon {
+  color:  #32baa6;
+  width:45px;
+  height:45px;
+  margin: 0 1em;
+  padding: 0% 1% 0 0%;
+}
+
 .navbar-caption {
   color: #32baa6;
 }
@@ -153,6 +161,7 @@ html, body {
   text-align: center;
   margin-top: 2em;
   height: auto;
+  padding-bottom: 100px;
 }
 
 .trip a{
@@ -172,4 +181,25 @@ html, body {
 
 .profile h1 {
   margin-bottom: 1.6em;
+}
+
+
+.photo-profile {
+  overflow:hidden;
+    -webkit-border-radius:50px;
+    -moz-border-radius:50px;
+    border-radius:50px;
+    width:100px;
+    height:100px;
+}
+
+.photo-profile-bar {
+  overflow:hidden;
+    -webkit-border-radius:50px;
+    -moz-border-radius:50px;
+    border-radius:50px;
+    width:45px;
+    height:45px;
+    margin: 0 1em;
+  padding: 0% 1% 0 0%;
 }

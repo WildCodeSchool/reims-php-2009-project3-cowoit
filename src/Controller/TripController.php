@@ -134,6 +134,6 @@ class TripController extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->persist($trip);
         $entityManager->flush();
-        return $this->redirectToRoute('profile');
+        return $this->redirect($this->generateUrl('profile', ['id' => $user->getId()]));
     }
 }

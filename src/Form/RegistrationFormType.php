@@ -12,6 +12,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 
 class RegistrationFormType extends AbstractType
 {
@@ -81,6 +82,17 @@ class RegistrationFormType extends AbstractType
                 'label' => 'Nom',
                 'attr' => array(
                     'placeholder' => 'Nom',
+                    'class' => 'form-control',
+                )
+            ])
+            ->add('photoFile', VichFileType::class, [
+                'required'      => false,
+                'label_attr' => array(
+                    'class' => 'form-label',
+                ),
+                'label' => 'Photo de Profile',
+                'attr' => array(
+                    'placeholder' => 'Photo de Profile',
                     'class' => 'form-control',
                 )
             ])

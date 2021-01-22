@@ -14,7 +14,8 @@
             <br>
             <h3>Informations Voyage</h3>
             <br>
-            <p class="navbar-profile">Date: {{ trip.date }}</p>
+            <p class="navbar-profile">{{ trip.date|format_datetime('full', 'none', locale='fr') }}</p>
+            <p class="navbar-profile">Heure de départ: {{trip.date|format_datetime('none', 'short', locale='fr') }}</p>
             <p class="navbar-profile">Départ: {{ trip.addressStart }}</p>
             <p class="navbar-profile">Arrivée: {{ trip.addressEnd }}</p>
             <p class="navbar-profile">Passagers possibles: {{ trip.nbPassengers }}</p>

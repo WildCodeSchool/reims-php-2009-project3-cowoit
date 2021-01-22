@@ -13,11 +13,11 @@
             {{ form_start(form) }}
             <div class="form-floating mb-3 mt-3">
                 {{ form_widget(form.date) }}
-                {{ form_label(form.date) }} 
+                {{ form_label(form.date) }}
             </div>
             <div class="form-floating mb-3">
             {{ form_widget(form.addressStart) }}
-            {{ form_label(form.addressStart) }}  
+            {{ form_label(form.addressStart) }}
             </div>
             <div class="form-floating mb-3">
             {{ form_widget(form.addressEnd) }}
@@ -26,8 +26,8 @@
             <div class="mb-2">
                 {{ form_row(form._token) }}
                 <button class="btn btn-outline-success search-button">Rechercher</button>{{ button_label|default('') }}</button>
-                {{ form_end(form, {'render_rest': false}) }}   
-            </div> 
+                {{ form_end(form, {'render_rest': false}) }}
+            </div>
         </div>
     </div>
 
@@ -35,9 +35,9 @@
         {% for trip in trips %}
         <a href="{{ path('trip_show', {'id': trip.id}) }}">
             <div class="profile-search">
-                    <p class="navbar-profile">{{ trip.date }}</p>
-                    <p class="navbar-profile">{{ trip.addressStart }}</p>
-                    <p class="navbar-profile">{{ trip.addressEnd }}</p>
+                    <p class="navbar-profile">Départ: {{ trip.date|format_datetime('none', 'short', locale='fr')}} - {{ trip.addressStart }}</p>
+                    <p class="navbar-profile">Arrivée: {{ trip.addressEnd }}</p>
+                    <p class="navbar-profile">{{ trip.driver.firstname }}</p>
             </div>
         </a>
         {% endfor %}

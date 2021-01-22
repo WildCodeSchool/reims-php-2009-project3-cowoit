@@ -1,15 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Profil de {{ user.firstname }} {{ user.lastname }}{% endblock %}
+{% block title %}Profil de {{ user.firstname }}{% endblock %}
 
 {% block body %}
 {% for message in app.flashes('message') %}
     <div>{{message}}</div>
 {% endfor %}
 <div class="profile">
-    <h1>Profil de {{ user.firstname }} {{ user.lastname }}</h1>
-    <p>Nom: {{ user.lastname }}</p>
+    <img class="photo-profile" src="/uploads/{{ user.photo }}" alt="">
+    <br>
+    <br>
     <p>Prénom: {{ user.firstname }}</p>
+    <p>Nom: {{ user.lastname }}</p>
     <p>E-mail: {{ user.email }}</p>
     <a href="{{path('profile_show_comment', {'id': user.id})}}"><p>Notes: {{ noteAvg }} / 5.0 - {{ noteCount }} avis</p></a>
     <p>Trajets Publiés: {{ allTrips }}</p>
