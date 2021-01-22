@@ -2,19 +2,27 @@
 
 namespace App\Entity;
 
+use DateTime;
+use App\Entity\Trip;
+use DateTimeInterface;
 use App\Entity\Participation;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\HttpFoundation\File\File;
+use Doctrine\Common\Collections\ArrayCollection;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Vich\UploaderBundle\Mapping\Annotation\Uploadable;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Vich\UploaderBundle\Mapping\Annotation\UploadableField;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
+ * @Vich\Uploadable
  */
-class User implements UserInterface
+class User implements UserInterface, \Serializable
 {
     /**
      * @ORM\Id
@@ -49,6 +57,24 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255)
      */
     private string $lastname;
+
+    /**
+      * @ORM\Column(type="string", length=255)
+      * @var string
+      */
+      private $photo;
+
+    /**
+      * @Vich\UploadableField(mapping="photo_file", fileNameProperty="photo")
+      * @var File|null
+      */
+     private $photoFile;
+
+    /**
+     * @ORM\Column(type="datetime")
+     * @var DateTimeInterface|null
+     */
+    private $updatedAt;
 
     /**
      * @ORM\OneToMany(targetEntity=Participation::class, mappedBy="passenger")
@@ -170,6 +196,62 @@ class User implements UserInterface
         $this->lastname = $lastname;
 
         return $this;
+    }
+
+    public function getPhoto(): ?string
+    {
+        return $this->photo;
+    }
+
+    public function setPhoto(string $photo): self
+    {
+        $this->photo = $photo;
+
+        return $this;
+    }
+
+    public function setPhotoFile(File $photoFile = null): User
+    {
+        $this->photoFile = $photoFile;
+        if ($photoFile) {
+            $this->updatedAt = new DateTime('now');
+        }
+        return $this;
+    }
+
+    public function getPhotoFile(): ?File
+    {
+        return $this->photoFile;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    public function serialize()
+    {
+        return serialize(array(
+            $this->id,
+            $this->email,
+            $this->password,
+        ));
+    }
+
+    public function unserialize($serialized)
+    {
+        list (
+            $this->id,
+            $this->email,
+            $this->password,
+        ) = unserialize($serialized);
     }
 
     /**
