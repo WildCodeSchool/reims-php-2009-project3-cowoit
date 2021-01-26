@@ -5,24 +5,29 @@
 {% block body %}
 <div class="profile">
     <h1>Mes trajets</h1>
-    {% for trip in driversTrips %}
-        <div class="profile">
-            <h3>Informations Conducteur</h3>
-            <br>
-            <p class="navbar-profile">Prénom: {{ trip.driver.firstname }}</p>
-            <p class="navbar-profile">Nom: {{ trip.driver.lastname }}</p>
-            <a href="{{ path('profile', {'id': trip.driver.id}) }}">Voir</a>
-            <br>
-            <hr>
-            <br>
-            <h3>Informations Voyage</h3>
-            <br>
-            <p class="navbar-profile">{{ trip.date|format_datetime('full', 'none', locale='fr') }}</p>
-            <p class="navbar-profile">Heure de départ: {{trip.date|format_datetime('none', 'short', locale='fr') }}</p>
-            <p class="navbar-profile">Départ: {{ trip.addressStart }}</p>
-            <p class="navbar-profile">Arrivée: {{ trip.addressEnd }}</p>
-            <p class="navbar-profile">Passagers possibles: {{ trip.nbPassengers }}</p>
-        </div>
-{% endfor %}
+    {% if driversTrips == null %}
+        <h3>Aucun trajet créé</h3>
+    {% else %}
+        {% for trip in driversTrips %}
+            <div class="profile">
+                <h3>Informations Conducteur</h3>
+                <br>
+                <p class="navbar-profile">Prénom: {{ trip.driver.firstname }}</p>
+                <p class="navbar-profile">Nom: {{ trip.driver.lastname }}</p>
+                <a href="{{ path('profile', {'id': trip.driver.id}) }}">Voir</a>
+                <br>
+                <hr>
+                <br>
+                <h3>Informations Voyage</h3>
+                <br>
+                <p class="navbar-profile">{{ trip.date|format_datetime('full', 'none', locale='fr') }}</p>
+                <p class="navbar-profile">Heure de départ: {{trip.date|format_datetime('none', 'short', locale='fr') }}</p>
+                <p class="navbar-profile">Départ: {{ trip.addressStart }}</p>
+                <p class="navbar-profile">Arrivée: {{ trip.addressEnd }}</p>
+                <p class="navbar-profile">Passagers possibles: {{ trip.nbPassengers }}</p>
+            </div>
+        {% endfor %}
+    {% endif %}
+    
 </div>
 {% endblock %}
