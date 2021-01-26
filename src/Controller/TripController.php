@@ -118,22 +118,32 @@ class TripController extends AbstractController
      */
     public function reserved(
         TripRepository $tripRepository,
+        Participationrepository $participationRepo,
+        int $id,
         Trip $trip
     ): Response {
         $participation = new Participation();
         $tripId = $tripRepository->find($trip->getId());
         /** @var \App\Entity\User $user */
         $user = $this->getUser();
-        $participation->setPassenger($user);
-        $participation->setTrip($tripId);
-        $entityManager = $this->getDoctrine()->getManager();
-        $entityManager->persist($participation);
-        $entityManager->flush();
 
-        $trip = $trip->setNbPassengers($trip->getNbPassengers() - 1);
-        $entityManager = $this->getDoctrine()->getManager();
-        $entityManager->persist($trip);
-        $entityManager->flush();
-        return $this->redirect($this->generateUrl('profile', ['id' => $user->getId()]));
+        $verifTrip = $participationRepo->findBy(['trip' => $tripId, 'passenger' => $user]);
+
+        if ($verifTrip != null) {
+            $this->addFlash('message', 'Trajet déjà réservé');
+            return $this->redirect($this->generateUrl('trip_show', ['id' => $id]));
+        } else {
+            $participation->setPassenger($user);
+            $participation->setTrip($tripId);
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($participation);
+            $entityManager->flush();
+
+            $trip = $trip->setNbPassengers($trip->getNbPassengers() - 1);
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($trip);
+            $entityManager->flush();
+            return $this->redirect($this->generateUrl('profile', ['id' => $user->getId()]));
+        }
     }
 }
