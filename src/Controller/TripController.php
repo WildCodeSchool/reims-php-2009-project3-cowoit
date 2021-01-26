@@ -132,6 +132,9 @@ class TripController extends AbstractController
         if ($verifTrip != null) {
             $this->addFlash('message', 'Trajet déjà réservé');
             return $this->redirect($this->generateUrl('trip_show', ['id' => $id]));
+        } elseif ($trip->getNbPassengers() <= 0) {
+            $this->addFlash('message', 'Trajet Complet');
+            return $this->redirect($this->generateUrl('trip_show', ['id' => $id]));
         } else {
             $participation->setPassenger($user);
             $participation->setTrip($tripId);
