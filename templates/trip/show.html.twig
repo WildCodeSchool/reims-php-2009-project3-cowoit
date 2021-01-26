@@ -8,6 +8,13 @@
             <br>
             <p class="navbar-profile">Prénom: {{ trip.driver.firstname }}</p>
             <p class="navbar-profile">Nom: {{ trip.driver.lastname }}</p>
+            <p class="navbar-profile">Véhicule:
+                {% if trip.driver.vehicle == null %}
+                    Non specifié
+                {% else %}
+                    {{ trip.driver.vehicle }}
+                {% endif %}
+            </p>
             <a href="{{ path('profile', {'id': trip.driver.id}) }}">Voir</a>
             <br>
             <hr>

@@ -4,11 +4,12 @@
 
 {% block body %}
 {% for message in app.flashes('message') %}
-    <div>{{message}}</div>
+    <ul>{{message}}</ul>
 {% endfor %}
 <div class="profile">
     <img class="photo-profile" src="/uploads/{{ user.photo }}" alt="">
     <br>
+    <p>{{ user.bio }}</p>
     <br>
     <p>Prénom: {{ user.firstname }}</p>
     <p>Nom: {{ user.lastname }}</p>

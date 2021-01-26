@@ -13,13 +13,14 @@ use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\Common\Collections\ArrayCollection;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Vich\UploaderBundle\Mapping\Annotation\Uploadable;
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Vich\UploaderBundle\Mapping\Annotation\UploadableField;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
- * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
+ * @UniqueEntity(fields={"email"}, message="Un compte a deja cette email")
  * @Vich\Uploadable
  */
 class User implements UserInterface, \Serializable
@@ -85,6 +86,22 @@ class User implements UserInterface, \Serializable
      * @ORM\OneToMany(targetEntity=Trip::class, mappedBy="Driver", orphanRemoval=true)
      */
     private Collection $trips;
+
+    /**
+     * @ORM\Column(type="bigint", nullable=true)
+     * @Assert\Length(max="10", maxMessage="Le numéro est trop long")
+     */
+    private ?int $phone;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private ?string $bio;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private ?string $vehicle;
 
     public function __construct()
     {
@@ -310,6 +327,42 @@ class User implements UserInterface, \Serializable
                 $trip->setDriver(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPhone(): ?int
+    {
+        return $this->phone;
+    }
+
+    public function setPhone(?int $phone): self
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    public function getBio(): ?string
+    {
+        return $this->bio;
+    }
+
+    public function setBio(?string $bio): self
+    {
+        $this->bio = $bio;
+
+        return $this;
+    }
+
+    public function getVehicle(): ?string
+    {
+        return $this->vehicle;
+    }
+
+    public function setVehicle(?string $vehicle): self
+    {
+        $this->vehicle = $vehicle;
 
         return $this;
     }

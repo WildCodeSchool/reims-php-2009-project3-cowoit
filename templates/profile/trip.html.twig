@@ -5,13 +5,17 @@
 {% block body %}
 <div class="profile">
     <h1>Prochain Trajet</h1>
-    {% for trip in trips %}
-        <p> <span class="bold">Départ:</span> {{ trip.trip.addressStart }}</p>
-        <p><span class="bold">Arrivée:</span> {{ trip.trip.addressEnd }}</p>
-        <p><span class="bold">Date:</span> {{ trip.trip.date }}</p>
-        <a href="{{ path('trip_show', {'id': trip.trip.id}) }}">Infos</a>
-        <br>
-        <hr>
-    {% endfor %}
+    {% if trips == null %}
+        <h3>Aucun trajet à venir</h3>
+    {% else %}
+        {% for trip in trips %}
+            <p> <span class="bold">Départ:</span> {{ trip.trip.addressStart }}</p>
+            <p><span class="bold">Arrivée:</span> {{ trip.trip.addressEnd }}</p>
+            <p><span class="bold">Date:</span> {{ trip.trip.date }}</p>
+            <a href="{{ path('trip_show', {'id': trip.trip.id}) }}">Infos</a>
+            <br>
+            <hr>
+        {% endfor %}
+    {% endif %}
 </div>
 {% endblock %}
