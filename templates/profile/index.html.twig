@@ -22,6 +22,7 @@
               <a class="btn btn-outline-success" href="{{ path('profile_passed_trips') }}">Trajets Passés</a>
               <a class="btn btn-outline-success" href="{{ path('profile_edit', {'id': user.id}) }}">Modifier le profil</a>
               <a class="btn btn-outline-success" href="{{ path('profile_edit_password', {'id': user.id}) }}">Modifier le mot de passe</a>
+              <a class="btn btn-outline-success" href="{{ path('profile_drivers_trip', {'id': user.id}) }}">Mes trajets</a>
               <a class="btn btn-outline-success" href="{{ path('app_logout') }}">Déconnexion</a>
           </div>
         {% endif %}
