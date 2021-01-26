@@ -4,6 +4,9 @@
 
 {% block body %}
     <div class="profile">
+            {% for message in app.flashes('message') %}
+                <ul>{{message}}</ul>
+            {% endfor %}
             <h3>Informations Conducteur</h3>
             <br>
             <p class="navbar-profile">Prénom: {{ trip.driver.firstname }}</p>
