@@ -64,10 +64,6 @@ html, body {
   color: #32baa6;
 }
 
-.navbar-link:hover {
-  color: #D2E605;
-}
-
 .navbar ul {
   margin-bottom: 0;
 }
@@ -154,6 +150,14 @@ html, body {
   text-decoration: none;
   color: #212529;
 }
+.button {
+  background-color: #32baa6;
+  color: #FFF;
+  border-radius: 5px;
+  padding: 0.5em;
+  border: 2px solid #32baa6;
+  font-weight: bold;
+}
 
 // Profile - mobile //
 
@@ -167,13 +171,16 @@ html, body {
 .trip a{
   margin-bottom: 10px;
   text-align: center;
-  width: 45%;
+  width: 75%;
   display: flex;
   justify-content: center;
   flex-direction: column;
+  text-decoration: none;
+  padding: 1.5rem;
 }
 
 .trip{
+  margin-top: 2rem;
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
@@ -185,21 +192,51 @@ html, body {
 
 
 .photo-profile {
-  overflow:hidden;
-    -webkit-border-radius:50px;
-    -moz-border-radius:50px;
-    border-radius:50px;
-    width:100px;
-    height:100px;
+  overflow: hidden;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50%;
+  width: 10rem;
+  height: 10rem;
+  object-fit: cover;
 }
 
 .photo-profile-bar {
-  overflow:hidden;
-    -webkit-border-radius:50px;
-    -moz-border-radius:50px;
-    border-radius:50px;
-    width:45px;
-    height:45px;
-    margin: 0 1em;
+  overflow: hidden;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  margin: 0 1em;
   padding: 0% 1% 0 0%;
+  object-fit: cover;
+}
+
+.profile-user-name {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 7vw;
+  font-weight: bold;
+  color: #2ea393;
+}
+
+.profile-appreciation {
+  color: #15534a;
+  text-decoration: none;
+  font-weight: bold;
+}
+.profile-appreciation p {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.appreciation-star {
+  color: #32baa6;
+  font-size: 22px;
+  margin-right: 5px;
+}
+.disconnect-button {
+  background-color: #349486;
+  border: none;
 }
