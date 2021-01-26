@@ -7,6 +7,7 @@
         <h1 class="h3 mb-3 font-weight-normal title">Modification du Profil</h1>
         <div class="col-2"></div>
         <div class="col-8 text-center bg-light card shadow-lg p-3 mb-5 bg-white rounded">
+          {{ form_errors(form.phone) }}
             {{ form_start(form) }}
             <div class="form-floating mb-3">
                 {{ form_widget(form.email) }}
@@ -19,6 +20,18 @@
             <div class="form-floating mb-3">
               {{ form_widget(form.lastname) }}
               {{ form_label(form.lastname) }}
+            </div>
+            <div class="form-floating mb-3">
+              {{ form_widget(form.phone) }}
+              {{ form_label(form.phone) }}
+            </div>
+            <div class="form-floating mb-3">
+              {{ form_widget(form.bio) }}
+              {{ form_label(form.bio) }}
+            </div>
+            <div class="form-floating mb-3">
+              {{ form_widget(form.vehicle) }}
+              {{ form_label(form.vehicle) }}
             </div>
             <div class="form-floating mb-3">
               {{ form_widget(form.photoFile) }}

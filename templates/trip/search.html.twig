@@ -9,7 +9,7 @@
     </section>
     <div class="row mb-2 form-card">
         <div class="col-2"></div>
-        <div class="col-8 text-center bg-light card shadow p-3 mb-5 bg-white rounded search-form">
+        <div class="col-8 text-center bg-light card cardForm p-3 mb-5 bg-white rounded search-form">
             {{ form_start(form) }}
             <div class="form-floating mb-3 mt-3">
                 {{ form_widget(form.date) }}
@@ -33,8 +33,8 @@
 
     <div class="search">
         {% for trip in trips %}
-        <a href="{{ path('trip_show', {'id': trip.id}) }}">
-            <div class="profile-search">
+        <a href="{{ path('trip_show', {'id': trip.id}) }}" class="spaceCard">
+            <div class="profile-search cardForm">
                     <p class="navbar-profile">Départ: {{ trip.date|format_datetime('none', 'short', locale='fr')}} - {{ trip.addressStart }}</p>
                     <p class="navbar-profile">Arrivée: {{ trip.addressEnd }}</p>
                     <p class="navbar-profile">{{ trip.driver.firstname }}</p>

@@ -1,23 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Annonce de covoiturage{% endblock %}
+{% block title %}Mes trajets{% endblock %}
 
 {% block body %}
-    <div class="profile">
-            {% for message in app.flashes('message') %}
-                <ul>{{message}}</ul>
-            {% endfor %}
+<div class="profile">
+    <h1>Mes trajets</h1>
+    {% for trip in driversTrips %}
+        <div class="profile">
             <h3>Informations Conducteur</h3>
             <br>
             <p class="navbar-profile">Prénom: {{ trip.driver.firstname }}</p>
             <p class="navbar-profile">Nom: {{ trip.driver.lastname }}</p>
-            <p class="navbar-profile">Véhicule:
-                {% if trip.driver.vehicle == null %}
-                    Non specifié
-                {% else %}
-                    {{ trip.driver.vehicle }}
-                {% endif %}
-            </p>
             <a href="{{ path('profile', {'id': trip.driver.id}) }}">Voir</a>
             <br>
             <hr>
@@ -29,6 +22,7 @@
             <p class="navbar-profile">Départ: {{ trip.addressStart }}</p>
             <p class="navbar-profile">Arrivée: {{ trip.addressEnd }}</p>
             <p class="navbar-profile">Passagers possibles: {{ trip.nbPassengers }}</p>
-        <a href="{{ path('trip_reserved', {'id': trip.id}) }}">Réserver</a>
-    </div>
+        </div>
+{% endfor %}
+</div>
 {% endblock %}
