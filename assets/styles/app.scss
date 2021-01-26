@@ -116,9 +116,20 @@ html, body {
 }
 
 .profile-search {
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1pt 4pt, rgba(0, 0, 0, 0.08) 0px 2pt 8pt;
   text-align: center;
-  border-radius: 16px;
+  border-radius: .25rem;
+}
+
+.cardForm {
+  box-shadow: 1px 3px 12px rgb(201, 201, 201);
+  color: #2ea393;
+  font-weight: 500;
+  padding-top: 3vw;
+  padding-bottom: 0.01vw;
+}
+
+.spaceCard {
+  margin-bottom: 5vw;
 }
 
 // New trip section //
