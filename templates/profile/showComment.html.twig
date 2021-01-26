@@ -6,12 +6,12 @@
 <div class="profile">
     <h1>Avis</h1>
     {% if comments == null %}
-        <h3>Aucun avis poster</h3>
+        <h3>Aucun avis posté</h3>
     {% else %}
         {% for comment in comments %}
-            <a href="{{path('profile', {'id': comment.passenger.id})}}"><p> <span class="bold">Utilisateur :</span> {{ comment.passenger.firstname }} {{ comment.passenger.lastname }}</p></a>
-            <p> <span class="bold">Note :</span> {{ comment.note }}</p>
-            <p><span class="bold">Commentaire :</span> {{ comment.comment }}</p>
+            <a href="{{path('profile', {'id': comment.passenger.id})}}"><p> <span class="bold">Utilisateur:</span> {{ comment.passenger.firstname }} {{ comment.passenger.lastname }}</p></a>
+            <p> <span class="bold">Note:</span> {{ comment.note }}</p>
+            <p><span class="bold">Commentaire:</span> {{ comment.comment }}</p>
             <hr>
             <br>
         {% endfor %}
