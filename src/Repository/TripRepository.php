@@ -95,4 +95,19 @@ class TripRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
         ;
     }
+
+    /**
+     * @return Trip[]
+     */
+    public function newDriverTrip(int $currentUser): ?array
+    {
+        return $this->createQueryBuilder('t')
+            ->where("t.date  > CURRENT_DATE()")
+            ->andWhere("t.Driver  = :currentUser")
+            ->orderBy("t.date")
+            ->setParameter('currentUser', $currentUser)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }
