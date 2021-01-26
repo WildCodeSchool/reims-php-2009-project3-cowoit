@@ -128,7 +128,7 @@ class ProfileController extends AbstractController
             // $entityManager->persist($participation);
             $this->getDoctrine()->getManager()->flush();
 
-            $this->addFlash('message', 'Commentaire poster');
+            $this->addFlash('message', 'Commentaire posté');
             return $this->redirect($this->generateUrl('profile', ['id' => $id]));
         }
 
@@ -144,5 +144,14 @@ class ProfileController extends AbstractController
     {
         $comments = $participationRepo->comment($id);
         return $this->render('profile/showComment.html.twig', ['comments' => $comments]);
+    }
+
+    /**
+     * @Route("/user/{id}/driversTrip", name="profile_drivers_trip")
+     */
+    public function posted(TripRepository $tripRepository, int $id): Response
+    {
+        $newDriverTrip = $tripRepository->newDriverTrip($id);
+        return $this->render('profile/driversTrip.html.twig', ['driversTrips' => $newDriverTrip]);
     }
 }
