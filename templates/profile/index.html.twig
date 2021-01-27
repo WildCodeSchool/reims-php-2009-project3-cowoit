@@ -3,29 +3,29 @@
 {% block title %}Profil de {{ user.firstname }} {{ user.lastname }}{% endblock %}
 
 {% block body %}
-{% for message in app.flashes('message') %}
-    <ul>{{message}}</ul>
-{% endfor %}
-<div class="profile">
-    <img class="photo-profile" src="/uploads/{{ user.photo }}" alt="">
-    <br>
-    <p>{{ user.bio }}</p>
-    <br>
-    <p class="profile-user-name">{{ user.firstname }} {{ user.lastname }}</p>
-    <p>{{ user.email }}</p>
-    <a class="profile-appreciation" href="{{path('profile_show_comment', {'id': user.id})}}"><p><i class="material-icons appreciation-star">grade</i> Notes: {{ noteAvg }} / 5.0 - {{ noteCount }} avis</p></a>
-    <p>Trajets Publiés: {{ allTrips }}</p>
-    {% if app.user is not null %}
-        {% if app.user.id == user.id %}
-          <div class="trip">
-              <a class="button" href="{{ path('profile_next_trips') }}">Prochain Trajet</a>
-              <a class="button" href="{{ path('profile_passed_trips') }}">Trajets Passés</a>
-              <a class="button" href="{{ path('profile_edit', {'id': user.id}) }}">Modifier le profil</a>
-              <a class="button" href="{{ path('profile_edit_password', {'id': user.id}) }}">Modifier le mot de passe</a>
-              <a class="button" href="{{ path('profile_drivers_trip', {'id': user.id}) }}">Mes trajets</a>
-              <a class="button disconnect-button" href="{{ path('app_logout') }}">Déconnexion</a>
-          </div>
+    {% for message in app.flashes('message') %}
+        <div class="alert alert-success">
+            {{message}}
+        </div>
+    {% endfor %}
+    <div class="profile">
+        <img class="photo-profile" src="/uploads/{{ user.photo }}" alt="">
+        <p class="profile-user-name">{{ user.firstname }} {{ user.lastname }}</p>
+        <p class="user-biography">{{ user.bio }}</p>
+        <p>{{ user.email }}</p>
+        <a class="profile-appreciation" href="{{path('profile_show_comment', {'id': user.id})}}"><p><i class="material-icons appreciation-star">grade</i> Notes: {{ noteAvg }} / 5.0 - {{ noteCount }} avis</p></a>
+        <p>Trajets Publiés: {{ allTrips }}</p>
+        {% if app.user is not null %}
+            {% if app.user.id == user.id %}
+            <div class="trip">
+                <a class="button" href="{{ path('profile_next_trips') }}">Prochain Trajet</a>
+                <a class="button" href="{{ path('profile_passed_trips') }}">Trajets Passés</a>
+                <a class="button" href="{{ path('profile_edit', {'id': user.id}) }}">Modifier le profil</a>
+                <a class="button" href="{{ path('profile_edit_password', {'id': user.id}) }}">Modifier le mot de passe</a>
+                <a class="button" href="{{ path('profile_drivers_trip', {'id': user.id}) }}">Mes trajets</a>
+                <a class="button disconnect-button" href="{{ path('app_logout') }}">Déconnexion</a>
+            </div>
+            {% endif %}
         {% endif %}
-    {% endif %}
-</div>
+    </div>
 {% endblock %}

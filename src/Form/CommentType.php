@@ -16,7 +16,7 @@ class CommentType extends AbstractType
     {
         $builder
             ->add('note', ChoiceType::class, [
-                'placeholder' => 'Noter votre trajet',
+                'placeholder' => 'Notez votre trajet',
                 'choices' => [
                     'Parfait' => 5,
                     'Très bien' => 4,

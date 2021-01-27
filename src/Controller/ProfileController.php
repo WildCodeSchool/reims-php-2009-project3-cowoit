@@ -52,7 +52,7 @@ class ProfileController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            $this->addFlash('message', 'Profil mis a jour');
+            $this->addFlash('message', 'Profil mis à jour');
             return $this->redirect($this->generateUrl('profile', ['id' => $id]));
         }
 

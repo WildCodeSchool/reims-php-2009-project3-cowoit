@@ -9,11 +9,27 @@
         <h3>Aucun avis posté</h3>
     {% else %}
         {% for comment in comments %}
-            <a href="{{path('profile', {'id': comment.passenger.id})}}"><p> <span class="bold">Utilisateur:</span> {{ comment.passenger.firstname }} {{ comment.passenger.lastname }}</p></a>
-            <p> <span class="bold">Note:</span> {{ comment.note }}</p>
-            <p><span class="bold">Commentaire:</span> {{ comment.comment }}</p>
+            <div class="appreciation-user-block">
+                <a href="{{path('profile', {'id': comment.passenger.id})}}"><p> <span class="bold">{{ comment.passenger.firstname }} {{ comment.passenger.lastname }}</span></p></a>
+                <img class="photo-profile passenger-photo" src="/uploads/{{ comment.passenger.photo }}" alt="">
+            </div>
+            <div class="appreciation-section">
+                {% if comment.note == 5 %}
+                    <p class="user-appreciation"><span class="bold">Parfait</span></p>  
+                {% elseif comment.note == 4 %}
+                    <p class="user-appreciation"><span class="bold">Très bien</span></p>
+                {% elseif comment.note == 3 %}
+                    <p class="user-appreciation"><span class="bold">Bien</span></p>
+                {% elseif comment.note == 2 %}
+                    <p class="user-appreciation"><span class="bold">Décevant</span></p>
+                {% elseif comment.note == 1 %}
+                    <p class="user-appreciation"><span class="bold">A éviter</span></p>
+                {% endif %}
+                <em>{{ comment.comment }}</em>
+                <p class="user-comment-date">{{ comment.trip.date|format_datetime('full', 'none', locale='fr')}}</p>
+            </div>
             <hr>
-            <br>
+            <br> 
         {% endfor %}
     {% endif %}
 </div>
