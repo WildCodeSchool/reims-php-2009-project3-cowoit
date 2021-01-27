@@ -25,6 +25,11 @@
                 <p class="navbar-profile">Départ: {{ trip.addressStart }}</p>
                 <p class="navbar-profile">Arrivée: {{ trip.addressEnd }}</p>
                 <p class="navbar-profile">Passagers possibles: {{ trip.nbPassengers }}</p>
+                {% if app.user is not null %}
+                    {% if trip.driver.id == app.user.id %}
+                        <a href="{{ path('trip_delete', {'id': trip.id}) }}">Supprimer</a>
+                    {% endif %}
+                {% endif %}
             </div>
         {% endfor %}
     {% endif %}

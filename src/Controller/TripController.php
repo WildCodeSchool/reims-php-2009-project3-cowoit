@@ -105,10 +105,16 @@ class TripController extends AbstractController
     /**
      * @Route("/trip/{id}", name="trip_show", methods={"GET"})
      */
-    public function show(Trip $trip): Response
+    public function show(Trip $trip, ParticipationRepository $participationRepo, int $id): Response
     {
+        /** @var \App\Entity\User $user */
+        $user = $this->getUser();
+
+        $participation = $participationRepo->findBy(['trip' => $id, 'passenger' => $user]);
+
         return $this->render('trip/show.html.twig', [
             'trip' => $trip,
+            'participation' => $participation,
         ]);
     }
 
@@ -148,5 +154,35 @@ class TripController extends AbstractController
             $entityManager->flush();
             return $this->redirect($this->generateUrl('profile', ['id' => $user->getId()]));
         }
+    }
+
+    /**
+     * @Route("/trip/{id}/delete", name="trip_delete")
+     */
+    public function delete(
+        Trip $trip,
+        ParticipationRepository $participationRepo,
+        TripRepository $tripRepository,
+        int $id
+    ): Response {
+        /** @var \App\Entity\User $user */
+        $user = $this->getUser();
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $participation = $participationRepo->findOneBy(['trip' => $id, 'passenger' => $user]);
+
+        if (null !== $trip->getDriver()) {
+            if ($user->getId() == $trip->getDriver()->getId()) {
+                $entityManager->remove($trip);
+                $entityManager->flush();
+            } elseif ($participation != null) {
+                $passenger = $trip->setNbPassengers($trip->getNbPassengers() + 1);
+                $entityManager->persist($passenger);
+                $entityManager->remove($participation);
+                $entityManager->flush();
+            }
+        }
+
+        return $this->redirect($this->generateUrl('profile', ['id' => $user->getId()]));
     }
 }
