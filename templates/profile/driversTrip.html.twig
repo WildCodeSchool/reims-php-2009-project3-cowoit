@@ -1,31 +1,31 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Mes trajets{% endblock %}
+{% block title %}Mes trajets - Cowoit{% endblock %}
 
 {% block body %}
-
-  <div class="driver-trips">
-    <h1>Mes trajets</h1>
-    {% if driversTrips == null %}
-        <h3>Aucun trajet créé</h3>
-    {% else %}
-        {% for trip in driversTrips %}
-            <div class="profile">
-                <h3>Informations Voyage</h3>
-                    <p class="bold">{{ trip.date|format_datetime('full', 'none', locale='fr') }}</p>
-                    <p><span class="bold">Heure de départ:</span> {{trip.date|format_datetime('none', 'short', locale='fr') }}</p>
-                    <p><span class="bold">Arrivée:</span> {{ trip.addressEnd }}</p>
-                    <p><span class="bold">Départ:</span> {{ trip.addressStart }}</p>
-                    <p><span class="bold">Passagers possibles:</span> {{ trip.nbPassengers }}</p>
-                    <hr>
-                {% if app.user is not null %}
-                    {% if trip.driver.id == app.user.id %}
-                        <a class="button" href="{{ path('trip_delete', {'id': trip.id}) }}">Supprimer</a>
+    <div class="driver-trips">
+        <section class="new-trip-block">
+            <img src="{{ asset('build/images/carpool-palmtree-green.jpg') }}" alt="electric carpool illustration" class="carpool-illustration"/>
+            <h1 class="h3 mb-3 font-weight-normal">Mes trajets</h1>
+        </section>
+        {% if driversTrips == null %}
+            <h3>Aucun trajet créé</h3>
+        {% else %}
+            {% for trip in driversTrips %}
+                <div class="driver-trips-info-block">
+                    <h3>Informations Voyage</h3>
+                        <p class="bold">{{ trip.date|format_datetime('full', 'none', locale='fr') }}</p>
+                        <p><span class="bold">Heure de départ:</span> {{trip.date|format_datetime('none', 'short', locale='fr') }}</p>
+                        <p><span class="bold">Arrivée:</span> {{ trip.addressEnd }}</p>
+                        <p><span class="bold">Départ:</span> {{ trip.addressStart }}</p>
+                        <p><span class="bold">Passagers possibles:</span> {{ trip.nbPassengers }}</p>
+                    {% if app.user is not null %}
+                        {% if trip.driver.id == app.user.id %}
+                            <a class="button" href="{{ path('trip_delete', {'id': trip.id}) }}">Annuler</a>
+                        {% endif %}
                     {% endif %}
-                {% endif %}
-            </div>
-        {% endfor %}
-    {% endif %}
-
+                    <hr>
+            {% endfor %}
+        {% endif %}
   </div>
 {% endblock %}

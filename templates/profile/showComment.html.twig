@@ -1,36 +1,40 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Avis{% endblock %}
+{% block title %}Avis - Cowoit{% endblock %}
 
 {% block body %}
-<div class="profile">
-    <h1>Avis</h1>
-    {% if comments == null %}
-        <h3>Aucun avis posté</h3>
-    {% else %}
-        {% for comment in comments %}
-            <div class="appreciation-user-block">
-                <a href="{{path('profile', {'id': comment.passenger.id})}}"><p> <span class="bold">{{ comment.passenger.firstname }} {{ comment.passenger.lastname }}</span></p></a>
-                <img class="photo-profile passenger-photo" src="/uploads/{{ comment.passenger.photo }}" alt="">
-            </div>
-            <div class="appreciation-section">
-                {% if comment.note == 5 %}
-                    <p class="user-appreciation"><span class="bold">Parfait</span></p>  
-                {% elseif comment.note == 4 %}
-                    <p class="user-appreciation"><span class="bold">Très bien</span></p>
-                {% elseif comment.note == 3 %}
-                    <p class="user-appreciation"><span class="bold">Bien</span></p>
-                {% elseif comment.note == 2 %}
-                    <p class="user-appreciation"><span class="bold">Décevant</span></p>
-                {% elseif comment.note == 1 %}
-                    <p class="user-appreciation"><span class="bold">A éviter</span></p>
-                {% endif %}
-                <em>{{ comment.comment }}</em>
-                <p class="user-comment-date">{{ comment.trip.date|format_datetime('full', 'none', locale='fr')}}</p>
-            </div>
-            <hr>
-            <br> 
-        {% endfor %}
-    {% endif %}
-</div>
+    <div class="passengers-comments">
+        <section class="new-trip-block">
+            <img src="{{ asset('build/images/carpool2.png') }}" alt="electric carpool illustration" class="carpool-illustration"/>
+            <h1 class="h3 mb-3 font-weight-normal">Avis</h1>
+        </section>
+        <div class="passengers-comments-block">
+            {% if comments == null %}
+                <h3>Aucun avis posté</h3>
+            {% else %}
+                {% for comment in comments %}
+                    <div class="appreciation-user-block">
+                        <a href="{{path('profile', {'id': comment.passenger.id})}}"><p> <span class="bold">{{ comment.passenger.firstname }} {{ comment.passenger.lastname }}</span></p></a>
+                        <img class="photo-profile passenger-photo" src="/uploads/{{ comment.passenger.photo }}" alt="passenger photo">
+                    </div>
+                    <div class="appreciation-section">
+                        {% if comment.note == 5 %}
+                            <p class="user-appreciation"><span class="bold">Parfait</span></p>  
+                        {% elseif comment.note == 4 %}
+                            <p class="user-appreciation"><span class="bold">Très bien</span></p>
+                        {% elseif comment.note == 3 %}
+                            <p class="user-appreciation"><span class="bold">Bien</span></p>
+                        {% elseif comment.note == 2 %}
+                            <p class="user-appreciation"><span class="bold">Décevant</span></p>
+                        {% elseif comment.note == 1 %}
+                            <p class="user-appreciation"><span class="bold">A éviter</span></p>
+                        {% endif %}
+                        <em>{{ comment.comment }}</em>
+                        <p class="user-comment-date">{{ comment.trip.date|format_datetime('full', 'none', locale='fr')}}</p>
+                    </div>
+                    <hr>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
 {% endblock %}

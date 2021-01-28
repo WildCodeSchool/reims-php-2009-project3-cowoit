@@ -1,46 +1,48 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Inscription{% endblock %}
+{% block title %}Inscription - Cowoit{% endblock %}
 
 {% block body %}
-    {% for flashError in app.flashes('verify_email_error') %}
-        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
-    {% endfor %}
-
-    <div class="row mb-2 form-card">
-        <h1 class="h3 mb-3 font-weight-normal title">Inscription</h1>
-        <div class="col-2"></div>
-        <div class="col-8 text-center bg-light card shadow p-3 mb-5 bg-white rounded">
-            {{ form_start(registrationForm) }}
-            <div class="form-floating mb-3">
-                {{ form_widget(registrationForm.email) }}
-                {{ form_label(registrationForm.email) }}
-              </div>
-            <div class="form-floating mb-3">
-                {{ form_widget(registrationForm.plainPassword, {
-                    label: 'Password'
-                }) }}
-                {{ form_label(registrationForm.plainPassword) }}
+  {% for flashError in app.flashes('verify_email_error') %}
+      <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+  {% endfor %}
+  <section class="new-trip-block">
+    <img src="{{ asset('build/images/sad_commuter.png') }}" alt="electric carpool illustration" class="carpool-illustration"/>
+    <h1 class="h3 mb-3 font-weight-normal register-title">Rejoignez-nous !</h1>
+  </section>
+    <div class="row mb-2 form-card register-form">
+      <div class="col-2"></div>
+      <div class="col-8 text-center bg-light card shadow p-3 mb-5 bg-white rounded login-form">
+          {{ form_start(registrationForm) }}
+          <div class="form-floating mb-3">
+              {{ form_widget(registrationForm.email) }}
+              {{ form_label(registrationForm.email) }}
             </div>
-            <div class="form-floating mb-3">
-              {{ form_widget(registrationForm.firstname) }}
-              {{ form_label(registrationForm.firstname) }}
+          <div class="form-floating mb-3">
+              {{ form_widget(registrationForm.plainPassword, {
+                  label: 'Password'
+              }) }}
+              {{ form_label(registrationForm.plainPassword) }}
+          </div>
+          <div class="form-floating mb-3">
+            {{ form_widget(registrationForm.firstname) }}
+            {{ form_label(registrationForm.firstname) }}
+          </div>
+          <div class="form-floating mb-3">
+            {{ form_widget(registrationForm.lastname) }}
+            {{ form_label(registrationForm.lastname) }}
+          </div>
+          <div class="form-floating mb-3">
+            {{ form_widget(registrationForm.photoFile) }}
+          </div>
+          <div class="form mb-3">
+              {{ form_widget(registrationForm.agreeTerms) }}
+              {{ form_label(registrationForm.agreeTerms) }}
             </div>
-            <div class="form-floating mb-3">
-              {{ form_widget(registrationForm.lastname) }}
-              {{ form_label(registrationForm.lastname) }}
-            </div>
-            <div class="form-floating mb-3">
-              {{ form_widget(registrationForm.photoFile) }}
-            </div>
-            <div class="form mb-3">
-                {{ form_widget(registrationForm.agreeTerms) }}
-                {{ form_label(registrationForm.agreeTerms) }}
-              </div>
-            <div class="mb-2">
-                <button type="submit" class="button">Inscription</button>{{ button_label|default('') }}</button>
-                {{ form_end(registrationForm) }}
-            </div>
+          <div class="mb-2">
+              <button type="submit" class="button">Inscription</button>{{ button_label|default('') }}</button>
+              {{ form_end(registrationForm) }}
         </div>
+      </div>
     </div>
 {% endblock %}
