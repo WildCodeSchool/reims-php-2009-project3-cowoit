@@ -17,14 +17,14 @@
         <p>Trajets Publiés: {{ allTrips }}</p>
         {% if app.user is not null %}
             {% if app.user.id == user.id %}
-            <div class="trip">
-                <a class="button" href="{{ path('profile_next_trips') }}">Prochain Trajet</a>
-                <a class="button" href="{{ path('profile_passed_trips') }}">Trajets Passés</a>
-                <a class="button" href="{{ path('profile_edit', {'id': user.id}) }}">Modifier le profil</a>
-                <a class="button" href="{{ path('profile_edit_password', {'id': user.id}) }}">Modifier le mot de passe</a>
-                <a class="button" href="{{ path('profile_drivers_trip', {'id': user.id}) }}">Mes trajets</a>
-                <a class="button disconnect-button" href="{{ path('app_logout') }}">Déconnexion</a>
-            </div>
+                <div class="trip">
+                    <a class="button" href="{{ path('profile_next_trips') }}">Prochain Trajet</a>
+                    <a class="button" href="{{ path('profile_passed_trips') }}">Trajets Passés</a>
+                    <a class="button" href="{{ path('profile_edit', {'id': user.id}) }}">Modifier le profil</a>
+                    <a class="button" href="{{ path('profile_edit_password', {'id': user.id}) }}">Modifier le mot de passe</a>
+                    <a class="button" href="{{ path('profile_drivers_trip', {'id': user.id}) }}">Mes trajets</a>
+                    <a class="button disconnect-button" href="{{ path('app_logout') }}">Déconnexion</a>
+                </div>
             {% endif %}
         {% endif %}
     </div>

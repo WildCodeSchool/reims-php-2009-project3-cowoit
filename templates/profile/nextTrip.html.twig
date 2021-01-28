@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Prochain Trajet{% endblock %}
+{% block title %}Prochain Trajet - Cowoit{% endblock %}
 
 {% block body %}
 <div class="profile">
@@ -9,10 +9,10 @@
         <h3>Aucun trajet à venir</h3>
     {% else %}
         {% for trip in trips %}
-            <p> <span class="bold">Départ:</span> {{ trip.trip.addressStart }}</p>
+            <p><span class="bold">Départ:</span> {{ trip.trip.addressStart }}</p>
             <p><span class="bold">Arrivée:</span> {{ trip.trip.addressEnd }}</p>
             <p><span class="bold">Date:</span> {{ trip.trip.date }}</p>
-            <a href="{{ path('trip_show', {'id': trip.trip.id}) }}">Infos</a>
+            <a class ="button" href="{{ path('trip_show', {'id': trip.trip.id}) }}">Infos</a>
             <br>
             <hr>
         {% endfor %}

@@ -98,7 +98,7 @@ class ProfileController extends AbstractController
     public function nextTrips(ParticipationRepository $participationRepo): Response
     {
         $trips = $participationRepo->nextTrips($this->getUser());
-        return $this->render('profile/trip.html.twig', ['trips' => $trips]);
+        return $this->render('profile/nextTrip.html.twig', ['trips' => $trips]);
     }
 
     /**

@@ -3,12 +3,21 @@ html, body {
   margin: 0;
   background-color: #FFFFFF;
 }
+
 h3 {
   color: #15534a;
   font-weight: bold;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
 }
+
 a {
   text-decoration: none;
+}
+
+hr {
+  margin-top: 3rem;
+  margin-bottom: 2rem;
 }
 
 // Header navbar //
@@ -89,6 +98,7 @@ a {
 .title {
   text-align: center;
   color: #2ea393;
+  font-weight: bold;
 }
 
 // Index/search page //
@@ -129,13 +139,27 @@ a {
   padding-bottom: 100px;
 }
 
+.driver-information-search {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin: 0 2em;
+}
+
+.driver-photo {
+  width: 50px !important;
+  height: 50px !important;
+}
+
 .profile-search {
   text-align: center;
   border-radius: .25rem;
 }
 
 .cardForm {
-  box-shadow: 1px 3px 12px rgb(201, 201, 201);
+  box-shadow: 1px 1px 15px rgb(201, 201, 201);
   color: #2ea393;
   font-weight: 500;
   padding-top: 3vw;
@@ -144,6 +168,10 @@ a {
 
 .spaceCard {
   margin-bottom: 5vw;
+}
+
+.driver-name {
+  margin-left: 1rem;
 }
 
 // New trip section //
@@ -178,11 +206,12 @@ a {
 .form-card a {
   color: #212529;
 }
+
 .button {
   background-color: #32baa6;
   color: #ffffff;
   border-radius: 5px;
-  padding: 0.5em;
+  padding: 0.5em 2em;
   border: 2px solid #32baa6;
   font-weight: bold;
 }
@@ -195,14 +224,13 @@ a {
 
 // Profile - mobile //
 
-.profile{
+.profile {
   text-align: center;
   margin-top: 2em;
-  height: auto;
-  padding-bottom: 100px;
+  margin-bottom: 7em;
 }
 
-.trip a{
+.trip a {
   margin-bottom: 10px;
   text-align: center;
   width: 75%;
@@ -212,11 +240,16 @@ a {
   padding: 1.5rem;
 }
 
-.trip{
+.trip {
   margin-top: 2rem;
+  margin-bottom: 6rem;
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
+}
+
+.profile-card {
+  margin-bottom: 6em !important;
 }
 
 .profile h1 {
@@ -224,7 +257,6 @@ a {
   color: #2ea393;
   font-weight: bold;
 }
-
 
 .photo-profile {
   overflow: hidden;
@@ -268,12 +300,32 @@ a {
   border: none;
 }
 
+// Trip search result section //
+
+.car-icon {
+  font-size: 10rem;
+}
+
+// User - My trips section //
+
+.driver-trips {
+  text-align: center;
+  margin-top: 2em;
+  margin-bottom: 4em;
+}
+.driver-trips h1 {
+  margin-bottom: 1.6em;
+  color: #2ea393;
+  font-weight: bold;
+}
+
 // Trip comment section //
 
 .passenger-photo {
   width: 50px;
   height: 50px;
 }
+
 .appreciation-user-block {
   position: relative;
   display: flex;
@@ -294,6 +346,8 @@ a {
 
 .user-comment-date {
   font-size: 1em;
+  font-weight: bold;
+  color: #726f6f;
 }
 
 .bold {
