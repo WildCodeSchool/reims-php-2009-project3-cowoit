@@ -1,21 +1,26 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Trajet passés{% endblock %}
+{% block title %}Trajets passés - Cowoit{% endblock %}
 
 {% block body %}
-<div class="profile">
-    <h1>Trajet passés</h1>
-    {% if trips == null %}
-        <h3>Aucun trajet effectué</h3>
-    {% else %}
-        {% for trip in trips %}
-            <p><span class="bold">Départ:</span> {{ trip.trip.addressStart }}</p>
-            <p><span class="bold">Arrivée:</span> {{ trip.trip.addressEnd }}</p>
-            <p><span class="bold">Date:</span> {{ trip.trip.date }}</p>
-            <a class ="button" href="{{ path('profile_comment', {'id': app.user.id ,'commentId': trip.trip.id}) }}">Laisser un commentaire</a>
-            <br>
-            <hr>
-        {% endfor %}
-    {% endif %}
-</div>
+    <div class="passed-trips">
+        <section class="new-trip-block">
+            <img src="{{ asset('build/images/carpool1.png') }}" alt="electric carpool illustration" class="carpool-illustration"/>
+            <h1 class="h3 mb-3 font-weight-normal">Trajets Passés</h1>
+        </section>
+        <div class="passed-trips-block">
+            {% if trips == null %}
+                <h3>Aucun trajet effectué</h3>
+            {% else %}
+                {% for trip in trips %}
+                    <p><span class="bold">Départ:</span> {{ trip.trip.addressStart }}</p>
+                    <p><span class="bold">Arrivée:</span> {{ trip.trip.addressEnd }}</p>
+                    <p><span class="bold">Date:</span> {{ trip.trip.date }}</p>
+                    <a class ="button" href="{{ path('profile_comment', {'id': app.user.id ,'commentId': trip.trip.id}) }}">Laisser un commentaire</a>
+                    <br>
+                    <hr>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
 {% endblock %}

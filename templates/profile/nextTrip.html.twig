@@ -1,21 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Prochain Trajet - Cowoit{% endblock %}
+{% block title %}Prochains Trajets - Cowoit{% endblock %}
 
 {% block body %}
-<div class="profile">
-    <h1>Prochain Trajet</h1>
-    {% if trips == null %}
-        <h3>Aucun trajet à venir</h3>
-    {% else %}
-        {% for trip in trips %}
-            <p><span class="bold">Départ:</span> {{ trip.trip.addressStart }}</p>
-            <p><span class="bold">Arrivée:</span> {{ trip.trip.addressEnd }}</p>
-            <p><span class="bold">Date:</span> {{ trip.trip.date }}</p>
-            <a class ="button" href="{{ path('trip_show', {'id': trip.trip.id}) }}">Infos</a>
-            <br>
-            <hr>
-        {% endfor %}
-    {% endif %}
-</div>
+    <div class="next-trips">
+        <section class="new-trip-block">
+            <img src="{{ asset('build/images/carpool3.png') }}" alt="electric carpool illustration" class="carpool-illustration"/>
+            <h1 class="h3 mb-3 font-weight-normal">Prochains Trajets</h1>
+        </section>
+        {% if trips == null %}
+            <h3>Aucun trajet à venir</h3>
+        {% else %}
+            {% for trip in trips %}
+                <h3>Informations Voyage</h3>
+                <p><span class="bold">Départ:</span> {{ trip.trip.addressStart }}</p>
+                <p><span class="bold">Arrivée:</span> {{ trip.trip.addressEnd }}</p>
+                <p><span class="bold">Date:</span> {{ trip.trip.date|format_datetime('none', 'short', locale='fr')}}</p>
+                <a class ="button" href="{{ path('trip_show', {'id': trip.trip.id}) }}">Infos</a>
+                <br>
+                <hr>
+            {% endfor %}
+        {% endif %}
+    </div>
 {% endblock %}

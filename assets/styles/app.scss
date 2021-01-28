@@ -1,6 +1,6 @@
 html, body {
   height: 100%;
-  margin: 0;
+  margin-bottom: 5rem;
   background-color: #FFFFFF;
 }
 
@@ -17,7 +17,7 @@ a {
 
 hr {
   margin-top: 3rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 // Header navbar //
@@ -101,6 +101,30 @@ hr {
   font-weight: bold;
 }
 
+// Login page //
+
+.login-title { 
+  font-family: 'Montserrat', sans-serif;
+  font-size: 7vw;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 3px 3px 8px #0c4338;
+  position: absolute;
+}
+
+// Register page //
+
+.register-title { 
+  font-family: 'Montserrat', sans-serif;
+  font-size: 7vw;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 3px 3px 8px #0c4338;
+  position: absolute;
+  padding-top: 1em;
+}
+
+
 // Index/search page //
 
 .search-form {
@@ -121,10 +145,13 @@ hr {
   font-family: 'Montserrat', sans-serif;
   font-size: 7vw;
   font-weight: bold;
-  color: #2ea393;
   position: absolute;
   top: 12%;
-  padding: 10px;
+  padding: 0.5em 0.5em;
+  font-family: 'Montserrat', sans-serif;
+  color: #fff;
+  text-shadow: 1px 2px 5px #24695c;
+  text-align: center;
 }
 
 .search a {
@@ -199,6 +226,18 @@ hr {
   margin: 0;
 }
 
+.login-form {
+  margin-top: -2.8em;
+}
+
+.register-form {
+  padding-bottom: 5em;
+}
+
+.edit-password-form {
+  padding-top: 4em;
+}
+
 .form-card{
   margin-top: 1.5em;
 }
@@ -226,8 +265,7 @@ hr {
 
 .profile {
   text-align: center;
-  margin-top: 2em;
-  margin-bottom: 7em;
+  margin-bottom: 8em;
 }
 
 .trip a {
@@ -310,16 +348,79 @@ hr {
 
 .driver-trips {
   text-align: center;
-  margin-top: 2em;
   margin-bottom: 4em;
 }
+
+.driver-trips-info-block {
+  text-align: center;
+}
+
 .driver-trips h1 {
-  margin-bottom: 1.6em;
-  color: #2ea393;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 7vw;
   font-weight: bold;
+  color: #fff;
+  text-shadow: 6px 4px 8px #0c4338;
+  position: absolute;
+  padding-bottom: 2em;
+}
+
+// User - Passed trips section //
+
+.passed-trips {
+  text-align: center;
+  margin-bottom: 4em;
+}
+
+.passed-trips-block {
+  padding-top: 2em;
+}
+
+.passed-trips h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 7vw;
+  font-weight: bold;
+  position: absolute;
+  text-shadow: 3px 3px 8px #0c4338;
+  color: #FFFFFF;
+  padding-top: 4em;
+}
+
+// User - Next trips section //
+
+.next-trips {
+  text-align: center;
+  margin-bottom: 4em;
+}
+.next-trips h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 7vw;
+  font-weight: bold;
+  position: absolute;
+  text-shadow: 6px 4px 8px #0c4338;
+  color: #FFFFFF;
 }
 
 // Trip comment section //
+
+.passengers-comments {
+  text-align: center;
+  margin-bottom: 4em;
+}
+
+.passengers-comments-block {
+  padding-top: 3em;
+}
+
+.passengers-comments h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 7vw;
+  font-weight: bold;
+  position: absolute;
+  text-shadow: 3px 3px 8px #0c4338;
+  color: #FFFFFF;
+  padding-top: 5.2em;
+}
 
 .passenger-photo {
   width: 50px;

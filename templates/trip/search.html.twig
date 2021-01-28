@@ -5,7 +5,7 @@
 {% block body %}
     <section class="presentation-block">
         <img src="{{ asset('build/images/carpooling.jpeg') }}" alt="carpool illustration" class="carpool-illustration"/>
-        <h1 class="h3 mb-3 font-weight-normal index-title">Trouvez le trajet idéal !</h1>
+        <h1 class="h3 mb-3 font-weight-normal index-title">Trouvez le trajet idéal 100% électrique !</h1>
     </section>
     <div class="row mb-2 form-card">
         <div class="col-2"></div>
@@ -38,7 +38,7 @@
                 <p><span class="bold">Départ:</span> {{ trip.addressStart }} - {{ trip.date|format_datetime('none', 'short', locale='fr')}}</p>
                 <p><span class="bold">Arrivée:</span> {{ trip.addressEnd }}</p>
                 <div class="driver-information-search">
-                    <img class="photo-profile driver-photo" src="/uploads/{{ trip.driver.photo }}" alt="">
+                    <img class="photo-profile driver-photo" src="/uploads/{{ trip.driver.photo }}" alt="driver photo">
                     <p class="bold driver-name">{{ trip.driver.firstname }} {{ trip.driver.lastname }}</p>
                 </div>
             </div>

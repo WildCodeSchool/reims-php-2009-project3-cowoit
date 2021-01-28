@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Connexion{% endblock %}
+{% block title %}Connexion - Cowoit{% endblock %}
 
 {% block body %}
 <form method="post">
@@ -18,10 +18,13 @@
     <input type="hidden" name="_csrf_token"
            value="{{ csrf_token('authenticate') }}"
     >
+    <section class="new-trip-block">
+        <img src="{{ asset('build/images/login_illustration.jpg') }}" alt="electric carpool illustration" class="carpool-illustration"/>
+        <h1 class="h3 mb-3 font-weight-normal login-title">Connexion</h1>
+    </section>
     <div class="row mb-2 form-card">
-        <h1 class="h3 mb-3 font-weight-normal title">Je me connecte</h1>
         <div class="col-2"></div>
-        <div class="col-8 text-center bg-light card shadow-lg p-3 mb-5 bg-white rounded">
+        <div class="col-8 text-center bg-light card shadow p-3 mb-5 bg-white rounded login-form">
             <div class="form-floating mb-3 mt-3">
                 <input type="email" value="{{ last_username }}" class="form-control" id="inputEmail" placeholder="name@example.com" name="email">
                 <label for="inputEmail" class="form-floating mb-3">E-mail</label>

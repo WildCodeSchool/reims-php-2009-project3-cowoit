@@ -9,7 +9,7 @@
         {% endfor %}
         <h3>Informations Conducteur</h3>
         <br>
-        <img class="photo-profile" src="/uploads/{{ trip.driver.photo }}" alt="">
+        <img class="photo-profile" src="/uploads/{{ trip.driver.photo }}" alt="driver photo">
         <p class="bold">{{ trip.driver.firstname }} {{ trip.driver.lastname }}</p>
         <p><span class="bold">Véhicule:</span>
             {% if trip.driver.vehicle == null %}
