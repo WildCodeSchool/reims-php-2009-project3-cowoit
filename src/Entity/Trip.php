@@ -42,7 +42,7 @@ class Trip
     private int $nbPassengers;
 
     /**
-     * @ORM\OneToMany(targetEntity=Participation::class, mappedBy="trip")
+     * @ORM\OneToMany(targetEntity=Participation::class, mappedBy="trip", cascade={"remove"})
      */
     private Collection $participations;
 

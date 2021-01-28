@@ -3,20 +3,29 @@
 {% block title %}Mes trajets{% endblock %}
 
 {% block body %}
-    <div class="driver-trips">
-        <h1>Mes trajets</h1>
-        {% if driversTrips == null %}
-            <h3>Aucun trajet créé</h3>
-        {% else %}
-            {% for trip in driversTrips %}
-                    <h3>Informations Voyage</h3>
+
+  <div class="driver-trips">
+    <h1>Mes trajets</h1>
+    {% if driversTrips == null %}
+        <h3>Aucun trajet créé</h3>
+    {% else %}
+        {% for trip in driversTrips %}
+            <div class="profile">
+                <h3>Informations Voyage</h3>
                     <p class="bold">{{ trip.date|format_datetime('full', 'none', locale='fr') }}</p>
                     <p><span class="bold">Heure de départ:</span> {{trip.date|format_datetime('none', 'short', locale='fr') }}</p>
                     <p><span class="bold">Arrivée:</span> {{ trip.addressEnd }}</p>
                     <p><span class="bold">Départ:</span> {{ trip.addressStart }}</p>
                     <p><span class="bold">Passagers possibles:</span> {{ trip.nbPassengers }}</p>
                     <hr>
-            {% endfor %}
-        {% endif %}
-    </div>
+                {% if app.user is not null %}
+                    {% if trip.driver.id == app.user.id %}
+                        <a class="button" href="{{ path('trip_delete', {'id': trip.id}) }}">Supprimer</a>
+                    {% endif %}
+                {% endif %}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+  </div>
 {% endblock %}

@@ -29,6 +29,17 @@
         <p><span class="bold">Arrivée:</span> {{ trip.addressEnd }}</p>
         <p><span class="bold">Départ:</span> {{ trip.addressStart }}</p>
         <p><span class="bold">Passagers possibles:</span> {{ trip.nbPassengers }}</p>
-        <a class="button" href="{{ path('trip_reserved', {'id': trip.id}) }}">Réserver</a>
+            {% if app.user is not null %}
+                {% if trip.driver.id == app.user.id %}
+                    <a class="button" href="{{ path('trip_delete', {'id': trip.id}) }}">Supprimer</a>
+                {% elseif participation != null %}
+                    <a class="button" href="{{ path('trip_delete', {'id': trip.id}) }}">Supprimer</a>
+                {% else %}
+                    <a class="button" href="{{ path('trip_reserved', {'id': trip.id}) }}">Réserver</a>
+                {% endif %}
+            {% endif %}
+            {% if app.user is null %}
+                <a class="button" href="{{ path('trip_reserved', {'id': trip.id}) }}">Réserver</a>
+            {% endif %}
     </div>
 {% endblock %}
