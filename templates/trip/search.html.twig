@@ -35,9 +35,12 @@
         {% for trip in trips %}
         <a href="{{ path('trip_show', {'id': trip.id}) }}" class="spaceCard">
             <div class="profile-search cardForm">
-                    <p class="navbar-profile">Départ: {{ trip.date|format_datetime('none', 'short', locale='fr')}} - {{ trip.addressStart }}</p>
-                    <p class="navbar-profile">Arrivée: {{ trip.addressEnd }}</p>
-                    <p class="navbar-profile">{{ trip.driver.firstname }}</p>
+                <p><span class="bold">Départ:</span> {{ trip.addressStart }} - {{ trip.date|format_datetime('none', 'short', locale='fr')}}</p>
+                <p><span class="bold">Arrivée:</span> {{ trip.addressEnd }}</p>
+                <div class="driver-information-search">
+                    <img class="photo-profile driver-photo" src="/uploads/{{ trip.driver.photo }}" alt="">
+                    <p class="bold driver-name">{{ trip.driver.firstname }} {{ trip.driver.lastname }}</p>
+                </div>
             </div>
         </a>
         {% endfor %}

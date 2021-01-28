@@ -4,6 +4,22 @@ html, body {
   background-color: #FFFFFF;
 }
 
+h3 {
+  color: #15534a;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+hr {
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
+
 // Header navbar //
 
 .navbar {
@@ -19,6 +35,26 @@ html, body {
   list-style-type: none;
 }
 
+.profile-icon {
+  overflow: hidden;
+  width: 50px;
+  height: 50px;
+  margin: 0 0.2em;
+  padding: 0% 1% 0 0%;
+  font-size: 3em !important;
+}
+
+.photo-profile-bar {
+  overflow: hidden;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  margin: 0 1em;
+  padding: 0% 1% 0 0%;
+  object-fit: cover;
+}
 // Navbar footer - mobile //
 
 .navbar-footer {
@@ -41,7 +77,6 @@ html, body {
   min-width: 50px;
   overflow: hidden;
   white-space: nowrap;
-  text-decoration: none;
   -webkit-tap-highlight-color: transparent;
   transition: background-color 0.1s ease-in-out;
   color: #FFFFFF;
@@ -50,14 +85,6 @@ html, body {
 .material-icons {
   color:  #32baa6;
   font-size: 2.5em;
-}
-
-.profile-icon {
-  color:  #32baa6;
-  width:45px;
-  height:45px;
-  margin: 0 1em;
-  padding: 0% 1% 0 0%;
 }
 
 .navbar-caption {
@@ -70,12 +97,14 @@ html, body {
 
 .title {
   text-align: center;
+  color: #2ea393;
+  font-weight: bold;
 }
 
 // Index/search page //
 
 .search-form {
-  margin-top: -4em;
+  margin-top: -2.8em;
 }
 
 .carpool-illustration {
@@ -101,7 +130,6 @@ html, body {
 .search a {
   display: block;
   width: 75%;
-  text-decoration: none;
 }
 
 .search {
@@ -111,13 +139,27 @@ html, body {
   padding-bottom: 100px;
 }
 
+.driver-information-search {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin: 0 2em;
+}
+
+.driver-photo {
+  width: 50px !important;
+  height: 50px !important;
+}
+
 .profile-search {
   text-align: center;
   border-radius: .25rem;
 }
 
 .cardForm {
-  box-shadow: 1px 3px 12px rgb(201, 201, 201);
+  box-shadow: 1px 1px 15px rgb(201, 201, 201);
   color: #2ea393;
   font-weight: 500;
   padding-top: 3vw;
@@ -126,6 +168,10 @@ html, body {
 
 .spaceCard {
   margin-bottom: 5vw;
+}
+
+.driver-name {
+  margin-left: 1rem;
 }
 
 // New trip section //
@@ -144,7 +190,7 @@ html, body {
   align-items: center;
 }
 .new-trip-form {
-  margin-top: -3.5em;
+  margin-top: -2.5em;
 }
 
 // Forms //
@@ -158,14 +204,14 @@ html, body {
 }
 
 .form-card a {
-  text-decoration: none;
   color: #212529;
 }
+
 .button {
   background-color: #32baa6;
-  color: #FFF;
+  color: #ffffff;
   border-radius: 5px;
-  padding: 0.5em;
+  padding: 0.5em 2em;
   border: 2px solid #32baa6;
   font-weight: bold;
 }
@@ -178,35 +224,39 @@ html, body {
 
 // Profile - mobile //
 
-.profile{
+.profile {
   text-align: center;
   margin-top: 2em;
-  height: auto;
-  padding-bottom: 100px;
+  margin-bottom: 7em;
 }
 
-.trip a{
+.trip a {
   margin-bottom: 10px;
   text-align: center;
   width: 75%;
   display: flex;
   justify-content: center;
   flex-direction: column;
-  text-decoration: none;
   padding: 1.5rem;
 }
 
-.trip{
+.trip {
   margin-top: 2rem;
+  margin-bottom: 6rem;
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
 }
 
-.profile h1 {
-  margin-bottom: 1.6em;
+.profile-card {
+  margin-bottom: 6em !important;
 }
 
+.profile h1 {
+  margin-bottom: 1.6em;
+  color: #2ea393;
+  font-weight: bold;
+}
 
 .photo-profile {
   overflow: hidden;
@@ -216,18 +266,11 @@ html, body {
   width: 10rem;
   height: 10rem;
   object-fit: cover;
+  margin-bottom: 1rem;
 }
 
-.photo-profile-bar {
-  overflow: hidden;
-  -webkit-border-radius: 50px;
-  -moz-border-radius: 50px;
-  border-radius: 50%;
-  width: 45px;
-  height: 45px;
-  margin: 0 1em;
-  padding: 0% 1% 0 0%;
-  object-fit: cover;
+.user-biography {
+  margin-top: 1rem;
 }
 
 .profile-user-name {
@@ -239,7 +282,6 @@ html, body {
 
 .profile-appreciation {
   color: #15534a;
-  text-decoration: none;
   font-weight: bold;
 }
 .profile-appreciation p {
@@ -257,3 +299,59 @@ html, body {
   background-color: #349486;
   border: none;
 }
+
+// Trip search result section //
+
+.car-icon {
+  font-size: 10rem;
+}
+
+// User - My trips section //
+
+.driver-trips {
+  text-align: center;
+  margin-top: 2em;
+  margin-bottom: 4em;
+}
+.driver-trips h1 {
+  margin-bottom: 1.6em;
+  color: #2ea393;
+  font-weight: bold;
+}
+
+// Trip comment section //
+
+.passenger-photo {
+  width: 50px;
+  height: 50px;
+}
+
+.appreciation-user-block {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 2em;
+}
+
+.appreciation-section {
+  text-align: start;
+  margin-left: 2rem;
+}
+
+.user-appreciation {
+  margin: 0;
+}
+
+.user-comment-date {
+  font-size: 1em;
+  font-weight: bold;
+  color: #726f6f;
+}
+
+.bold {
+  color: #15534a;
+  font-weight: bold;
+}
+

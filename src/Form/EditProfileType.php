@@ -58,7 +58,7 @@ class EditProfileType extends AbstractType
                 )
             ])
             ->add('bio', TextareaType::class, [
-                'label' => 'MiniBio',
+                'label' => 'A propos de vous',
                 'required'   => false,
                 'label_attr' => array(
                     'class' => 'form-label',
@@ -86,9 +86,9 @@ class EditProfileType extends AbstractType
                 ),
                 'allow_delete' => false,
                 'download_uri' => false,
-                'label' => 'Photo de Profile',
+                'label' => 'Photo de Profil',
                 'attr' => array(
-                    'placeholder' => 'Photo de Profile',
+                    'placeholder' => 'Photo de Profil',
                     'class' => 'form-control',
                 )
             ])

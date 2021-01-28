@@ -136,10 +136,10 @@ class TripController extends AbstractController
         $verifTrip = $participationRepo->findBy(['trip' => $tripId, 'passenger' => $user]);
 
         if ($verifTrip != null) {
-            $this->addFlash('message', 'Trajet déjà réservé');
+            $this->addFlash('message', 'Trajet déjà réservé !');
             return $this->redirect($this->generateUrl('trip_show', ['id' => $id]));
         } elseif ($trip->getNbPassengers() <= 0) {
-            $this->addFlash('message', 'Trajet Complet');
+            $this->addFlash('message', 'Trajet complet !');
             return $this->redirect($this->generateUrl('trip_show', ['id' => $id]));
         } else {
             $participation->setPassenger($user);
@@ -152,6 +152,7 @@ class TripController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($trip);
             $entityManager->flush();
+            $this->addFlash('message', 'Trajet réservé !');
             return $this->redirect($this->generateUrl('profile', ['id' => $user->getId()]));
         }
     }
