@@ -38,5 +38,8 @@
                     <a href="{{ path('trip_reserved', {'id': trip.id}) }}">Réserver</a>
                 {% endif %}
             {% endif %}
+            {% if app.user is null %}
+                <a href="{{ path('trip_reserved', {'id': trip.id}) }}">Réserver</a>
+            {% endif %}
     </div>
 {% endblock %}
