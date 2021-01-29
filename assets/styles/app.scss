@@ -1,6 +1,5 @@
 html, body {
   height: 100%;
-  margin-bottom: 5rem;
   background-color: #FFFFFF;
 }
 
@@ -280,10 +279,10 @@ hr {
 
 .trip {
   margin-top: 2rem;
-  margin-bottom: 6rem;
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
+  padding-bottom: 5rem;
 }
 
 .profile-card {
